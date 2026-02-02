@@ -2,6 +2,7 @@ import Link from "next/link";
 import { signUp } from "@/app/actions/auth";
 import Button from "@/components/ui/Button";
 import { Nav } from "@/components/layout/Nav";
+import { getLocaleFromCookies, getServerTranslation } from "@/lib/i18n/server";
 
 export default async function SignUpPage({
   searchParams,
@@ -9,6 +10,9 @@ export default async function SignUpPage({
   searchParams: Promise<{ error?: string }>;
 }) {
   const params = await searchParams;
+  const locale = await getLocaleFromCookies();
+  const t = getServerTranslation(locale);
+
   return (
     <div className="min-h-screen bg-verdict-off-white">
       <Nav />
@@ -29,7 +33,7 @@ export default async function SignUpPage({
             <form action={signUp} className="mt-6 space-y-4">
               <div>
                 <label htmlFor="email" className="mb-1 block text-sm font-medium text-verdict-gray-700">
-                  Email
+                  {t("auth.email")}
                 </label>
                 <input
                   id="email"
@@ -57,14 +61,14 @@ export default async function SignUpPage({
                 />
               </div>
               <Button type="submit" fullWidth size="lg">
-                Sign up — 5 days free
+                {t("auth.signup.button")}
               </Button>
             </form>
 
             <p className="mt-6 text-center text-sm text-verdict-gray-500">
-              Already have an account?{" "}
+              {t("auth.have.account")}{" "}
               <Link href="/auth/login" className="font-medium text-verdict-red hover:underline">
-                Log in
+                {t("auth.login.link")}
               </Link>
             </p>
           </div>

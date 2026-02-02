@@ -1,8 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Profile } from "@/lib/types/database";
 
-const TRIAL_DAYS = 5;
-const TRIAL_DAILY_LIMIT = 5;
+const TRIAL_DAYS = 3;
+const TRIAL_DAILY_LIMIT = 1;
 /** Starter plan: limited analyses per day */
 const STARTER_DAILY_LIMIT = 20;
 
@@ -11,6 +11,7 @@ export interface UsageState {
   reason?: "trial_ended" | "daily_limit" | "paywall";
   profile: Profile | null;
   trialDaysLeft: number;
+  trialDayNumber: number; // 1, 2, or 3 — which day of the trial
   analysesLeftToday: number;
   isPaid: boolean;
 }
@@ -67,6 +68,7 @@ export async function getUsageState(userId: string): Promise<UsageState> {
       reason: "paywall",
       profile: null,
       trialDaysLeft: 0,
+      trialDayNumber: 0,
       analysesLeftToday: 0,
       isPaid: false,
     };
@@ -82,25 +84,27 @@ export async function getUsageState(userId: string): Promise<UsageState> {
     // Starter: limited per day; Pro & Premium: unlimited
     if (p.subscription_status === "starter") {
       const left = Math.max(0, STARTER_DAILY_LIMIT - p.daily_usage_count);
-      return {
-        canAnalyze: left > 0,
-        reason: left === 0 ? "daily_limit" : undefined,
-        profile: p as Profile,
-        trialDaysLeft: 0,
-        analysesLeftToday: left,
-        isPaid: true,
-      };
-    }
     return {
-      canAnalyze: true,
+      canAnalyze: left > 0,
+      reason: left === 0 ? "daily_limit" : undefined,
       profile: p as Profile,
       trialDaysLeft: 0,
-      analysesLeftToday: -1, // unlimited (Pro & Premium)
+      trialDayNumber: 0,
+      analysesLeftToday: left,
       isPaid: true,
     };
   }
+  return {
+    canAnalyze: true,
+    profile: p as Profile,
+    trialDaysLeft: 0,
+    trialDayNumber: 0,
+    analysesLeftToday: -1, // unlimited (Pro & Premium)
+    isPaid: true,
+  };
+  }
 
-  // Free trial
+  // Free trial: 1 analysis per day × 3 days
   const trialStart = p.trial_start_date ? new Date(p.trial_start_date) : new Date();
   const trialEnd = new Date(trialStart);
   trialEnd.setDate(trialEnd.getDate() + TRIAL_DAYS);
@@ -110,12 +114,18 @@ export async function getUsageState(userId: string): Promise<UsageState> {
   const analysesLeftToday = Math.max(0, TRIAL_DAILY_LIMIT - p.daily_usage_count);
   const dailyLimitReached = p.daily_usage_count >= TRIAL_DAILY_LIMIT;
 
+  // Which day of the trial (1, 2, or 3) — based on days elapsed
+  const msPerDay = 24 * 60 * 60 * 1000;
+  const daysElapsed = Math.floor((now.getTime() - trialStart.getTime()) / msPerDay);
+  const trialDayNumber = Math.min(daysElapsed + 1, TRIAL_DAYS);
+
   if (trialExpired) {
     return {
       canAnalyze: false,
       reason: "trial_ended",
       profile: p as Profile,
       trialDaysLeft: 0,
+      trialDayNumber: TRIAL_DAYS,
       analysesLeftToday: 0,
       isPaid: false,
     };
@@ -127,6 +137,7 @@ export async function getUsageState(userId: string): Promise<UsageState> {
       reason: "daily_limit",
       profile: p as Profile,
       trialDaysLeft,
+      trialDayNumber,
       analysesLeftToday: 0,
       isPaid: false,
     };
@@ -136,6 +147,7 @@ export async function getUsageState(userId: string): Promise<UsageState> {
     canAnalyze: true,
     profile: p as Profile,
     trialDaysLeft,
+    trialDayNumber,
     analysesLeftToday,
     isPaid: false,
   };

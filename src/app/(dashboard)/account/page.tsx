@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Card, CardHeader } from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import { AccountPlanForm } from "./AccountPlanForm";
+import { getLocaleFromCookies, getServerTranslation } from "@/lib/i18n/server";
 
 export default async function AccountPage({
   searchParams,
@@ -16,6 +17,9 @@ export default async function AccountPage({
   } = await supabase.auth.getUser();
   if (!user) return null;
 
+  const locale = await getLocaleFromCookies();
+  const t = getServerTranslation(locale);
+
   const { data: profile } = await supabase
     .from("profiles")
     .select("email, subscription_status, stripe_customer_id")
@@ -26,18 +30,18 @@ export default async function AccountPage({
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="text-2xl font-semibold text-verdict-gray-900">Account & Billing</h1>
+      <h1 className="text-2xl font-semibold text-verdict-gray-900">{t("account.title")}</h1>
       <p className="mt-2 text-verdict-gray-600">
-        Manage your subscription and billing.
+        {t("account.subtitle")}
       </p>
 
       <Card className="mt-8">
-        <CardHeader title="Account" subtitle="Email" />
+        <CardHeader title="Account" subtitle={t("account.email")} />
         <p className="text-verdict-gray-900">{profile?.email ?? user.email}</p>
       </Card>
 
       <Card className="mt-6">
-        <CardHeader title="Current plan" subtitle="Subscription" />
+        <CardHeader title={t("account.plan")} subtitle={t("account.subscription")} />
         <p className="capitalize text-verdict-gray-900">{status}</p>
         {status !== "free" && (
           <p className="mt-2 text-sm text-verdict-gray-500">
@@ -48,7 +52,7 @@ export default async function AccountPage({
 
       {params.stripe === "not_configured" && (
         <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
-          Stripe is not configured. Add STRIPE_SECRET_KEY and price IDs to .env — see README.
+          {t("account.stripe.not.configured")}
         </div>
       )}
       {params.success === "1" && (
@@ -64,7 +68,7 @@ export default async function AccountPage({
         {status !== "free" && (
           <form action="/api/stripe/portal" method="post">
             <Button type="submit" variant="secondary">
-              Open Stripe Customer Portal
+              {t("account.portal")}
             </Button>
           </form>
         )}
@@ -72,7 +76,7 @@ export default async function AccountPage({
 
       <p className="mt-8 text-sm text-verdict-gray-500">
         <Link href="/pricing" className="font-medium text-verdict-red hover:underline">
-          View pricing
+          {t("account.view.pricing")}
         </Link>
       </p>
     </div>

@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useI18n } from "@/lib/i18n/context";
 import { submitContactForm } from "@/app/actions/contact";
 import Button from "@/components/ui/Button";
 
 export function ContactForm() {
+  const { t } = useI18n();
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -29,7 +31,7 @@ export function ContactForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="firstName" className="mb-1 block text-sm font-medium text-verdict-gray-700">
-            Prénom *
+            {t("contact.firstname")} *
           </label>
           <input
             id="firstName"
@@ -42,7 +44,7 @@ export function ContactForm() {
         </div>
         <div>
           <label htmlFor="lastName" className="mb-1 block text-sm font-medium text-verdict-gray-700">
-            Nom *
+            {t("contact.lastname")} *
           </label>
           <input
             id="lastName"
@@ -56,9 +58,9 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-1 block text-sm font-medium text-verdict-gray-700">
-          Email *
-        </label>
+          <label htmlFor="email" className="mb-1 block text-sm font-medium text-verdict-gray-700">
+            {t("contact.email")} *
+          </label>
         <input
           id="email"
           name="email"
@@ -85,7 +87,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="message" className="mb-1 block text-sm font-medium text-verdict-gray-700">
-          Cela concerne quoi ? *
+          {t("contact.message")} *
         </label>
         <textarea
           id="message"
@@ -93,13 +95,13 @@ export function ContactForm() {
           required
           rows={5}
           className="w-full resize-y rounded-xl border border-verdict-gray-200 bg-white px-4 py-2.5 text-verdict-gray-900 placeholder-verdict-gray-400 focus:border-verdict-red focus:outline-none focus:ring-1 focus:ring-verdict-red"
-          placeholder="Décrivez votre demande..."
+          placeholder={t("contact.message.placeholder")}
         />
       </div>
 
       {status === "success" && (
         <div className="rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-800">
-          Message envoyé. Nous vous répondrons à l&apos;adresse indiquée.
+          {t("contact.success")}
         </div>
       )}
       {status === "error" && errorMessage && (
@@ -109,7 +111,7 @@ export function ContactForm() {
       )}
 
       <Button type="submit" size="lg" fullWidth>
-        Envoyer
+        {t("contact.send")}
       </Button>
     </form>
   );

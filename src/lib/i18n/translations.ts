@@ -27,12 +27,13 @@ export const translations: Record<Locale, Record<string, string>> = {
     "hero.subtitle": "VERDICT est une couche de sécurité IA qui détecte les erreurs, les risques et les mauvaises décisions avant qu'ils ne vous coûtent de l'argent, du temps ou de la réputation.",
     "hero.cta.trial": "Essai gratuit",
     "hero.cta.how": "Comment ça marche",
-    "hero.trial.info": "5 jours d'essai gratuit • 5 analyses par jour • Annuler à tout moment",
+    "hero.trial.info": "3 jours d'essai gratuit • 1 analyse par jour • Sans carte bancaire",
+    "hero.disclaimer": "VERDICT n'est PAS un avocat et ne fournit PAS de conseils juridiques. Nous expliquons, analysons, mettons en évidence les risques et aidons à rédiger des réponses — à titre informatif uniquement.",
 
     // Social proof
     "social.rating": "Note moyenne",
     "social.trusted": "Confiance de",
-    "social.professionals": "12 000+ professionnels",
+    "social.professionals": "+12 483 utilisateurs",
     "social.worldwide": "dans le monde",
 
     // Problem
@@ -52,26 +53,49 @@ export const translations: Record<Locale, Record<string, string>> = {
     "solution.step3.title": "Corrigez avant d'envoyer",
     "solution.step3.desc": "Copiez le texte corrigé. Envoyez en toute confiance.",
 
+    // Use cases
+    "usecase.title": "Comment VERDICT aide",
+    "usecase.subtitle": "Un accompagnement calme quand vous en avez besoin.",
+    "usecase.scary.email.title": "Vous avez reçu un email inquiétant ?",
+    "usecase.scary.email.desc": "Collez-le. VERDICT explique ce qu'il signifie, met en évidence les risques et vous aide à rédiger une réponse calme et sûre. Pas de langage alarmant.",
+    "usecase.contract.title": "Un contrat vous inquiète ?",
+    "usecase.contract.desc": "VERDICT le simplifie en langage clair. Signale les termes flous et les risques. Vous aide à demander des précisions. Pas de conseil juridique — de l'accompagnement.",
+    "usecase.pressure.title": "On vous presse de payer ?",
+    "usecase.pressure.desc": "Le mode anti-arnaque détecte les tactiques de pression, les menaces d'urgence, le langage juridique vague et la fausse autorité. Vous aide à rester calme et à vous protéger.",
+    "usecase.scam.title": "Vous avez peur d'être arnaqué ?",
+    "usecase.scam.desc": "VERDICT signale les drapeaux rouges — pression, fausse urgence, termes flous. Explique vos droits. Recommande les prochaines étapes. Protecteur, pas alarmiste.",
+
     // What VERDICT analyzes
     "analyzes.title": "Ce que VERDICT analyse",
-    "analyzes.subtitle": "Tout texte qui pourrait vous coûter s'il est incorrect.",
+    "analyzes.subtitle": "Emails, lettres, notifications juridiques, contrats, messages ou situations expliquées en texte brut.",
     "analyzes.emails": "Emails",
+    "analyzes.letters": "Lettres",
+    "analyzes.legal_notices": "Notifications juridiques",
     "analyzes.contracts": "Contrats",
-    "analyzes.decisions": "Décisions commerciales",
     "analyzes.messages": "Messages sensibles",
-    "analyzes.documents": "Documents importants",
+    "analyzes.situations": "Situations (texte)",
 
     // AI Transparency
-    "ai.title": "Comment l'IA réfléchit",
-    "ai.subtitle": "La transparence est essentielle pour la confiance. VERDICT ne devine pas — il signale les risques et explique pourquoi.",
-    "ai.1": "Il ne devine pas. Il signale ce qui pourrait mal tourner en fonction de votre texte.",
-    "ai.2": "Il met en évidence les risques — juridiques, financiers, réputationnels — avec des étiquettes claires.",
-    "ai.3": "Il explique pourquoi quelque chose est risqué ou peu clair.",
-    "ai.4": "Il suggère des alternatives plus sûres et une version corrigée que vous pouvez copier.",
+    "ai.title": "Comment VERDICT fonctionne",
+    "ai.subtitle": "VERDICT explique, analyse, met en évidence les risques et aide à rédiger des réponses. Il ne donne PAS de conseils juridiques — il vous guide en toute sécurité.",
+    "ai.1": "Explique ce dont parle le message en langage clair.",
+    "ai.2": "Met en évidence les risques, ce qu'il faut surveiller, et vos droits (généraux, informatifs — pas de conseil juridique).",
+    "ai.3": "Mode anti-arnaque : détecte la pression, les menaces d'urgence, le langage juridique vague, la fausse autorité et les drapeaux rouges.",
+    "ai.4": "Générateur de réponses : sûr, ferme, neutre ou demande de clarification — réponses calmes, professionnelles, protectrices que vous pouvez copier.",
+    "ai.trained": "IA entraînée sur des cas juridiques réels — pas un avocat mais un assistant fiable.",
+
+    // Compare
+    "compare.title": "Avec ou sans VERDICT",
+    "compare.with": "Avec VERDICT",
+    "compare.with.desc": "Analyse claire, risques identifiés, réponse proposée prête à envoyer.",
+    "compare.without": "Sans VERDICT",
+    "compare.without.desc": "Stress, doute, risque de mauvaise décision ou de se faire arnaquer.",
 
     // Example
     "example.title": "Exemple de résultat",
     "example.subtitle": "Réaliste. Pas de marketing.",
+    "example.recouvrement": "Email de recouvrement",
+    "example.assurance": "Lettre d'assurance",
     "example.input": "Texte d'entrée",
     "example.errors": "❌ Erreurs critiques",
     "example.risks": "⚠️ Risques",
@@ -80,7 +104,12 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Who it's for
     "who.title": "Pour qui ?",
-    "who.subtitle": "Tous ceux qui prennent des décisions importantes avec des mots.",
+    "who.subtitle": "Tous ceux qui ont besoin d'un accompagnement calme et protecteur — surtout les personnes qui ne peuvent pas se payer un avocat.",
+    "who.role1": "Personnes sans avocat",
+    "who.role2": "Freelances",
+    "who.role3": "Petites entreprises",
+    "who.role4": "Consommateurs",
+    "who.role5": "Tout lecteur incertain d'un message",
 
     // Why people stay
     "why.title": "Pourquoi les gens restent abonnés",
@@ -93,8 +122,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     // Pricing
     "pricing.title": "Tarification",
     "pricing.subtitle": "Très clair. Mensuel uniquement. Annuler à tout moment. Paiement sécurisé via Stripe.",
-    "pricing.trial": "5 jours d'essai gratuit",
-    "pricing.trial.desc": "5 analyses par jour • Pas de carte de crédit requise.",
+    "pricing.trial": "3 jours d'essai gratuit",
+    "pricing.trial.desc": "1 analyse par jour • Pas de carte bancaire requise.",
     "pricing.starter": "Starter",
     "pricing.pro": "Pro",
     "pricing.premium": "Premium",
@@ -126,7 +155,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "faq.q2": "Puis-je faire confiance à l'IA ?",
     "faq.a2": "VERDICT est conçu pour être précis et transparent. Il explique pourquoi il signale quelque chose et suggère des alternatives. Utilisez-le comme une deuxième paire d'yeux, pas comme l'autorité finale.",
     "faq.q3": "Que se passe-t-il après l'essai ?",
-    "faq.a3": "Après 5 jours, vous pouvez vous abonner à Starter ou Pro. Si vous ne vous abonnez pas, vous ne serez pas facturé. Vous pouvez toujours créer un compte et mettre à jour plus tard.",
+    "faq.a3": "Après 3 jours, vous pouvez vous abonner à Starter, Pro ou Premium. Si vous ne vous abonnez pas, vous ne serez pas facturé. Vous pouvez créer un compte et mettre à niveau plus tard.",
     "faq.q4": "Puis-je annuler à tout moment ?",
     "faq.a4": "Oui. Annulez depuis votre compte. Sans question. Vous gardez l'accès jusqu'à la fin de votre période de facturation.",
     "faq.q5": "Mes données sont-elles en sécurité ?",
@@ -134,7 +163,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Final CTA
     "cta.title": "Obtenez votre verdict avant que ça compte.",
-    "cta.subtitle": "Commencez votre essai gratuit de 5 jours. Pas de carte de crédit requise.",
+    "cta.subtitle": "Commencez votre essai gratuit de 3 jours. Pas de carte bancaire requise.",
 
     // Footer
     "footer.tagline": "Avant d'envoyer — obtenez un verdict.",
@@ -148,17 +177,32 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Dashboard
     "dashboard.title": "Tableau de bord",
+    "dashboard.subtitle": "Votre usage et actions rapides.",
     "dashboard.welcome": "Bienvenue",
+    "dashboard.usage": "Utilisation",
     "dashboard.trial": "Essai gratuit",
     "dashboard.days.left": "jours restants",
     "dashboard.analyses.left": "analyses restantes aujourd'hui",
+    "dashboard.analyses.of": "sur 1 restant aujourd'hui",
+    "dashboard.on.your.plan": "Sur votre plan",
     "dashboard.unlimited": "Illimité",
     "dashboard.plan": "Plan",
+    "dashboard.upgrade": "Mettre à niveau",
     "dashboard.analyze.cta": "Nouvelle analyse",
+    "dashboard.view.past": "Voir les analyses passées",
+    "dashboard.available.on.pro": "Disponible sur Pro",
+    "dashboard.account.billing": "Compte & Facturation",
+    "dashboard.manage.subscription": "Gérer l'abonnement",
+    "dashboard.trial.message": "Pour garantir la qualité et éviter les abus, l'essai est limité.",
+    "dashboard.trial.day": "Jour {day}",
+    "dashboard.trial.used": "{used}/1 utilisé",
+    "dashboard.trial.remaining": "1/1 restant",
+    "dashboard.trial.last": "Dernier essai",
 
     // Analyze
     "analyze.title": "Analyser",
-    "analyze.subtitle": "Collez votre courriel, contrat ou message. VERDICT vous indiquera les erreurs critiques, les risques, les améliorations possibles et vous fournira une version corrigée.",
+    "analyze.subtitle": "Collez votre courriel, lettre, contrat, notification juridique ou situation. VERDICT explique, met en évidence les risques et vous aide à rédiger des réponses sûres.",
+    "analyze.disclaimer": "VERDICT n'est PAS un avocat et ne fournit PAS de conseils juridiques. Ceci est à titre informatif uniquement.",
     "analyze.placeholder": "Collez ici votre courriel, contrat ou message...",
     "analyze.button": "Analyser",
     "analyze.analyzing": "Analyse en cours...",
@@ -166,6 +210,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     "analyze.remaining.today": "restantes aujourd'hui",
     "analyze.trial": "Essai",
     "analyze.days.left": "jours restants",
+    "analyze.paste.required": "Veuillez coller du texte à analyser.",
+    "analyze.paywall.daily": "Limite quotidienne atteinte. Mettez à niveau ou réessayez demain.",
+    "analyze.paywall.trial": "Essai terminé. Mettez à niveau pour continuer.",
+    "analyze.paywall.generic": "Veuillez mettre à niveau pour continuer.",
+    "analyze.usage.format": "Jour {day} : {count}/1 utilisé · {days} jours restants",
 
     // Results
     "result.errors": "Erreurs critiques",
@@ -223,6 +272,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     "auth.login.link": "Se connecter",
 
     // Paywall
+    "paywall.title": "Mettez à niveau pour continuer",
+    "paywall.body": "Abonnez-vous pour débloquer des analyses illimitées, l'historique et plus. Annulez à tout moment.",
     "paywall.trial.ended": "Votre essai est terminé",
     "paywall.daily.limit": "Limite quotidienne atteinte",
     "paywall.upgrade": "Passez à un plan payant pour continuer à utiliser VERDICT.",
@@ -250,12 +301,13 @@ export const translations: Record<Locale, Record<string, string>> = {
     "hero.subtitle": "VERDICT is an AI safety layer that detects errors, risks, and bad decisions before they cost you money, time, or reputation.",
     "hero.cta.trial": "Start free trial",
     "hero.cta.how": "See how it works",
-    "hero.trial.info": "5-day free trial • 5 analyses per day • Cancel anytime",
+    "hero.trial.info": "3-day free trial • 1 analysis per day • No credit card required",
+    "hero.disclaimer": "VERDICT is NOT a lawyer and does NOT provide legal advice. We explain, analyze, highlight risks, and help draft responses — for informational use only.",
 
     // Social proof
     "social.rating": "Average rating",
     "social.trusted": "Trusted by",
-    "social.professionals": "12,000+ professionals",
+    "social.professionals": "+12,483 users",
     "social.worldwide": "worldwide",
 
     // Problem
@@ -275,26 +327,49 @@ export const translations: Record<Locale, Record<string, string>> = {
     "solution.step3.title": "Fix before sending",
     "solution.step3.desc": "Copy the corrected text. Send with confidence.",
 
+    // Use cases
+    "usecase.title": "How VERDICT helps",
+    "usecase.subtitle": "Calm guidance when you need it.",
+    "usecase.scary.email.title": "Received a scary email?",
+    "usecase.scary.email.desc": "Paste it. VERDICT explains what it means, highlights risks, and helps you draft a calm, safe reply. No panic language.",
+    "usecase.contract.title": "Unsure about a contract?",
+    "usecase.contract.desc": "VERDICT breaks it down in plain language. Points out unclear terms and risks. Helps you ask for clarification. Not legal advice — guidance.",
+    "usecase.pressure.title": "Being pressured to pay?",
+    "usecase.pressure.desc": "Anti-scam mode detects pressure tactics, urgency threats, vague legal language, and fake authority. Helps you stay calm and protect yourself.",
+    "usecase.scam.title": "Afraid of being scammed?",
+    "usecase.scam.desc": "VERDICT flags red flags — pressure, fake urgency, unclear terms. Explains your rights. Recommends next steps. Protective, not panicking.",
+
     // What VERDICT analyzes
     "analyzes.title": "What VERDICT analyzes",
-    "analyzes.subtitle": "Any text that could cost you if it's wrong.",
+    "analyzes.subtitle": "Emails, letters, legal notices, contracts, messages, or situations explained in plain text.",
     "analyzes.emails": "Emails",
+    "analyzes.letters": "Letters",
+    "analyzes.legal_notices": "Legal notices",
     "analyzes.contracts": "Contracts",
-    "analyzes.decisions": "Business decisions",
     "analyzes.messages": "Sensitive messages",
-    "analyzes.documents": "Important documents",
+    "analyzes.situations": "Situations (plain text)",
 
     // AI Transparency
-    "ai.title": "How the AI thinks",
-    "ai.subtitle": "Transparency is critical for trust. VERDICT does not guess — it highlights risks and explains why.",
-    "ai.1": "It does not guess. It flags what could go wrong based on your text.",
-    "ai.2": "It highlights risks — legal, financial, reputational — with clear labels.",
-    "ai.3": "It explains why something is risky or unclear.",
-    "ai.4": "It suggests safer alternatives and a corrected version you can copy.",
+    "ai.title": "How VERDICT works",
+    "ai.subtitle": "VERDICT explains, analyzes, highlights risks, and helps draft responses. It does NOT give legal advice — it guides you safely.",
+    "ai.1": "Explains what the message is about in plain language.",
+    "ai.2": "Highlights risks, what to be careful about, and your rights (general, informational — not legal advice).",
+    "ai.3": "Anti-scam mode: detects pressure tactics, urgency threats, vague legal language, fake authority, scam red flags.",
+    "ai.4": "Response Generator: safe, firm, neutral, or ask-for-clarification — calm, professional, protective replies you can copy.",
+    "ai.trained": "AI trained on real legal cases — not a lawyer but a reliable assistant.",
+
+    // Compare
+    "compare.title": "With or without VERDICT",
+    "compare.with": "With VERDICT",
+    "compare.with.desc": "Clear analysis, risks identified, proposed reply ready to send.",
+    "compare.without": "Without VERDICT",
+    "compare.without.desc": "Stress, doubt, risk of wrong decision or being scammed.",
 
     // Example
     "example.title": "Example output",
     "example.subtitle": "Realistic. No marketing fluff.",
+    "example.recouvrement": "Debt collection email",
+    "example.assurance": "Insurance letter",
     "example.input": "Input text",
     "example.errors": "❌ Critical errors",
     "example.risks": "⚠️ Risks",
@@ -303,7 +378,12 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Who it's for
     "who.title": "Who it's for",
-    "who.subtitle": "Anyone making important decisions with words.",
+    "who.subtitle": "Anyone who needs calm, protective guidance — especially people who cannot afford a lawyer.",
+    "who.role1": "People who can't afford a lawyer",
+    "who.role2": "Freelancers",
+    "who.role3": "Small business owners",
+    "who.role4": "Consumers",
+    "who.role5": "Anyone unsure about a message",
 
     // Why people stay
     "why.title": "Why people stay subscribed",
@@ -316,8 +396,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     // Pricing
     "pricing.title": "Pricing",
     "pricing.subtitle": "Very clear. Monthly only. Cancel anytime. Secure payment via Stripe.",
-    "pricing.trial": "5-day free trial",
-    "pricing.trial.desc": "5 analyses per day • No credit card required.",
+    "pricing.trial": "3-day free trial",
+    "pricing.trial.desc": "1 analysis per day • No credit card required.",
     "pricing.starter": "Starter",
     "pricing.pro": "Pro",
     "pricing.premium": "Premium",
@@ -349,7 +429,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "faq.q2": "Can I trust the AI?",
     "faq.a2": "VERDICT is designed to be precise and transparent. It explains why it flags something and suggests alternatives. Use it as a second pair of eyes, not as the final authority.",
     "faq.q3": "What happens after the trial?",
-    "faq.a3": "After 5 days, you can subscribe to Starter or Pro. If you don't subscribe, you won't be charged. You can still create an account and upgrade later.",
+    "faq.a3": "After 3 days, you can subscribe to Starter, Pro, or Premium. If you don't subscribe, you won't be charged. You can create an account and upgrade later.",
     "faq.q4": "Can I cancel anytime?",
     "faq.a4": "Yes. Cancel from your account. No questions asked. You keep access until the end of your billing period.",
     "faq.q5": "Is my data safe?",
@@ -357,7 +437,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Final CTA
     "cta.title": "Get your verdict before it matters.",
-    "cta.subtitle": "Start your 5-day free trial. No credit card required.",
+    "cta.subtitle": "Start your 3-day free trial. No credit card required.",
 
     // Footer
     "footer.tagline": "Before you send it — get a verdict.",
@@ -371,17 +451,32 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Dashboard
     "dashboard.title": "Dashboard",
+    "dashboard.subtitle": "Your usage and quick actions.",
     "dashboard.welcome": "Welcome",
+    "dashboard.usage": "Usage",
     "dashboard.trial": "Free trial",
     "dashboard.days.left": "days left",
     "dashboard.analyses.left": "analyses left today",
+    "dashboard.analyses.of": "of 1 left today",
+    "dashboard.on.your.plan": "On your plan",
     "dashboard.unlimited": "Unlimited",
     "dashboard.plan": "Plan",
+    "dashboard.upgrade": "Upgrade",
     "dashboard.analyze.cta": "New analysis",
+    "dashboard.view.past": "View past analyses",
+    "dashboard.available.on.pro": "Available on Pro",
+    "dashboard.account.billing": "Account & Billing",
+    "dashboard.manage.subscription": "Manage subscription",
+    "dashboard.trial.message": "To ensure quality and prevent abuse, the trial is limited.",
+    "dashboard.trial.day": "Day {day}",
+    "dashboard.trial.used": "{used}/1 used",
+    "dashboard.trial.remaining": "1/1 remaining",
+    "dashboard.trial.last": "Last trial",
 
     // Analyze
     "analyze.title": "Analyze",
-    "analyze.subtitle": "Paste your email, contract, or message. VERDICT will identify critical errors, risks, possible improvements, and provide a corrected version.",
+    "analyze.subtitle": "Paste your email, letter, contract, legal notice, or situation. VERDICT explains, highlights risks, and helps you draft safe replies.",
+    "analyze.disclaimer": "VERDICT is NOT a lawyer and does NOT provide legal advice. This is for informational use only.",
     "analyze.placeholder": "Paste your email, contract, or message here...",
     "analyze.button": "Analyze",
     "analyze.analyzing": "Analyzing...",
@@ -389,6 +484,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     "analyze.remaining.today": "left today",
     "analyze.trial": "Trial",
     "analyze.days.left": "days left",
+    "analyze.paste.required": "Please paste some text to analyze.",
+    "analyze.paywall.daily": "Daily limit reached. Upgrade or try again tomorrow.",
+    "analyze.paywall.trial": "Trial ended. Upgrade to continue.",
+    "analyze.paywall.generic": "Please upgrade to continue.",
+    "analyze.usage.format": "Day {day}: {count}/1 used · {days} days left",
 
     // Results
     "result.errors": "Critical errors",
@@ -446,6 +546,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "auth.login.link": "Log in",
 
     // Paywall
+    "paywall.title": "Upgrade to continue",
     "paywall.trial.ended": "Your trial has ended",
     "paywall.daily.limit": "Daily limit reached",
     "paywall.upgrade": "Upgrade to a paid plan to continue using VERDICT.",
@@ -473,7 +574,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     "hero.subtitle": "VERDICT ist eine KI-Sicherheitsebene, die Fehler, Risiken und schlechte Entscheidungen erkennt, bevor sie Sie Geld, Zeit oder Reputation kosten.",
     "hero.cta.trial": "Kostenlos testen",
     "hero.cta.how": "So funktioniert es",
-    "hero.trial.info": "5 Tage kostenlos • 5 Analysen pro Tag • Jederzeit kündbar",
+    "hero.trial.info": "3 Tage kostenlos • 1 Analyse pro Tag • Keine Kreditkarte nötig",
+    "hero.disclaimer": "VERDICT ist KEIN Anwalt und gibt KEINE Rechtsberatung. Wir erklären, analysieren, heben Risiken hervor und helfen beim Verfassen von Antworten — nur zu Informationszwecken.",
 
     // Social proof
     "social.rating": "Durchschnittliche Bewertung",
@@ -498,14 +600,27 @@ export const translations: Record<Locale, Record<string, string>> = {
     "solution.step3.title": "Vor dem Senden korrigieren",
     "solution.step3.desc": "Korrigierten Text kopieren. Mit Zuversicht senden.",
 
+    // Use cases
+    "usecase.title": "Wie VERDICT hilft",
+    "usecase.subtitle": "Ruhige Begleitung, wenn Sie sie brauchen.",
+    "usecase.scary.email.title": "Beängstigende E-Mail erhalten?",
+    "usecase.scary.email.desc": "Einfügen. VERDICT erklärt die Bedeutung, hebt Risiken hervor und hilft Ihnen, eine ruhige, sichere Antwort zu verfassen. Keine Paniksprache.",
+    "usecase.contract.title": "Unsicher bei einem Vertrag?",
+    "usecase.contract.desc": "VERDICT erklärt ihn in einfacher Sprache. Weist auf unklare Begriffe und Risiken hin. Hilft bei Nachfragen. Keine Rechtsberatung — Begleitung.",
+    "usecase.pressure.title": "Stehen Sie unter Druck zu zahlen?",
+    "usecase.pressure.desc": "Der Anti-Betrugsmodus erkennt Drucktaktiken, Dringlichkeitsdrohungen, vage rechtliche Formulierungen und falsche Autorität. Hilft Ihnen, ruhig zu bleiben und sich zu schützen.",
+    "usecase.scam.title": "Angst vor Betrug?",
+    "usecase.scam.desc": "VERDICT markiert Warnsignale — Druck, falsche Dringlichkeit, unklare Begriffe. Erklärt Ihre Rechte. Empfiehlt nächste Schritte. Schützend, nicht panisch.",
+
     // What VERDICT analyzes
     "analyzes.title": "Was VERDICT analysiert",
-    "analyzes.subtitle": "Jeder Text, der Sie kosten könnte, wenn er falsch ist.",
+    "analyzes.subtitle": "E-Mails, Briefe, rechtliche Mitteilungen, Verträge, Nachrichten oder Situationen in Klartext.",
     "analyzes.emails": "E-Mails",
+    "analyzes.letters": "Briefe",
+    "analyzes.legal_notices": "Rechtliche Mitteilungen",
     "analyzes.contracts": "Verträge",
-    "analyzes.decisions": "Geschäftsentscheidungen",
     "analyzes.messages": "Sensible Nachrichten",
-    "analyzes.documents": "Wichtige Dokumente",
+    "analyzes.situations": "Situationen (Klartext)",
 
     // AI Transparency
     "ai.title": "Wie die KI denkt",
@@ -513,11 +628,21 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ai.1": "Es rät nicht. Es markiert, was schiefgehen könnte, basierend auf Ihrem Text.",
     "ai.2": "Es hebt Risiken hervor — rechtlich, finanziell, reputationsbezogen — mit klaren Kennzeichnungen.",
     "ai.3": "Es erklärt, warum etwas riskant oder unklar ist.",
-    "ai.4": "Es schlägt sicherere Alternativen und eine korrigierte Version vor, die Sie kopieren können.",
+    "ai.4": "Antwort-Generator: sicher, fest, neutral oder Klärungsanfrage — ruhige, professionelle Antworten zum Kopieren.",
+    "ai.trained": "KI trainiert auf echten Rechtsfällen — kein Anwalt, aber ein zuverlässiger Assistent.",
+
+    // Compare
+    "compare.title": "Mit oder ohne VERDICT",
+    "compare.with": "Mit VERDICT",
+    "compare.with.desc": "Klare Analyse, Risiken identifiziert, vorgeschlagene Antwort bereit zum Senden.",
+    "compare.without": "Ohne VERDICT",
+    "compare.without.desc": "Stress, Zweifel, Risiko falscher Entscheidung oder Betrug.",
 
     // Example
     "example.title": "Beispielausgabe",
     "example.subtitle": "Realistisch. Kein Marketing-Blabla.",
+    "example.recouvrement": "Inkasso-E-Mail",
+    "example.assurance": "Versicherungsschreiben",
     "example.input": "Eingabetext",
     "example.errors": "❌ Kritische Fehler",
     "example.risks": "⚠️ Risiken",
@@ -526,7 +651,12 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Who it's for
     "who.title": "Für wen?",
-    "who.subtitle": "Alle, die wichtige Entscheidungen mit Worten treffen.",
+    "who.subtitle": "Alle, die ruhige, schützende Begleitung brauchen — besonders Menschen, die sich keinen Anwalt leisten können.",
+    "who.role1": "Menschen ohne Anwalt",
+    "who.role2": "Freelancer",
+    "who.role3": "Kleinunternehmer",
+    "who.role4": "Verbraucher",
+    "who.role5": "Jeder, der bei einer Nachricht unsicher ist",
 
     // Why people stay
     "why.title": "Warum Menschen abonniert bleiben",
@@ -539,8 +669,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     // Pricing
     "pricing.title": "Preise",
     "pricing.subtitle": "Sehr klar. Nur monatlich. Jederzeit kündbar. Sichere Zahlung über Stripe.",
-    "pricing.trial": "5 Tage kostenlose Testversion",
-    "pricing.trial.desc": "5 Analysen pro Tag • Keine Kreditkarte erforderlich.",
+    "pricing.trial": "3 Tage kostenlose Testversion",
+    "pricing.trial.desc": "1 Analyse pro Tag • Keine Kreditkarte erforderlich.",
     "pricing.starter": "Starter",
     "pricing.pro": "Pro",
     "pricing.premium": "Premium",
@@ -580,7 +710,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Final CTA
     "cta.title": "Holen Sie sich Ihr Verdict, bevor es zählt.",
-    "cta.subtitle": "Starten Sie Ihre 5-tägige kostenlose Testversion. Keine Kreditkarte erforderlich.",
+    "cta.subtitle": "Starten Sie Ihre 3-tägige kostenlose Testversion. Keine Kreditkarte erforderlich.",
 
     // Footer
     "footer.tagline": "Bevor Sie es senden — holen Sie sich ein Verdict.",
@@ -594,17 +724,32 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Dashboard
     "dashboard.title": "Dashboard",
+    "dashboard.subtitle": "Ihre Nutzung und Schnellaktionen.",
     "dashboard.welcome": "Willkommen",
+    "dashboard.usage": "Nutzung",
     "dashboard.trial": "Kostenlose Testversion",
     "dashboard.days.left": "Tage übrig",
     "dashboard.analyses.left": "Analysen heute übrig",
+    "dashboard.analyses.of": "von 1 heute übrig",
+    "dashboard.on.your.plan": "In Ihrem Plan",
     "dashboard.unlimited": "Unbegrenzt",
     "dashboard.plan": "Plan",
+    "dashboard.upgrade": "Upgrade",
     "dashboard.analyze.cta": "Neue Analyse",
+    "dashboard.view.past": "Vergangene Analysen ansehen",
+    "dashboard.available.on.pro": "Verfügbar mit Pro",
+    "dashboard.account.billing": "Konto & Abrechnung",
+    "dashboard.manage.subscription": "Abonnement verwalten",
+    "dashboard.trial.message": "Zur Qualitätssicherung und Missbrauchsprävention ist die Testversion begrenzt.",
+    "dashboard.trial.day": "Tag {day}",
+    "dashboard.trial.used": "{used}/1 verwendet",
+    "dashboard.trial.remaining": "{remaining}/1 übrig",
+    "dashboard.trial.last": "Letzte Testversion",
 
     // Analyze
     "analyze.title": "Analysieren",
-    "analyze.subtitle": "Fügen Sie Ihre E-Mail, Ihren Vertrag oder Ihre Nachricht ein. VERDICT identifiziert kritische Fehler, Risiken, mögliche Verbesserungen und liefert eine korrigierte Version.",
+    "analyze.subtitle": "Fügen Sie Ihre E-Mail, Ihren Brief, Vertrag, rechtliche Mitteilung oder Situation ein. VERDICT erklärt, hebt Risiken hervor und hilft Ihnen, sichere Antworten zu verfassen.",
+    "analyze.disclaimer": "VERDICT ist KEIN Anwalt und gibt KEINE Rechtsberatung. Dies dient nur zu Informationszwecken.",
     "analyze.placeholder": "Fügen Sie hier Ihre E-Mail, Ihren Vertrag oder Ihre Nachricht ein...",
     "analyze.button": "Analysieren",
     "analyze.analyzing": "Analysiere...",
@@ -612,6 +757,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     "analyze.remaining.today": "heute übrig",
     "analyze.trial": "Testversion",
     "analyze.days.left": "Tage übrig",
+    "analyze.paste.required": "Bitte fügen Sie einen Text zum Analysieren ein.",
+    "analyze.paywall.daily": "Tageslimit erreicht. Upgrade oder morgen erneut versuchen.",
+    "analyze.paywall.trial": "Testversion beendet. Upgrade zum Fortfahren.",
+    "analyze.paywall.generic": "Bitte upgraden Sie zum Fortfahren.",
+    "analyze.usage.format": "Tag {day}: {count}/1 verwendet · {days} Tage übrig",
 
     // Results
     "result.errors": "Kritische Fehler",
@@ -669,6 +819,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     "auth.login.link": "Anmelden",
 
     // Paywall
+    "paywall.title": "Upgrade zum Fortfahren",
+    "paywall.body": "Abonnieren Sie sich für unbegrenzte Analysen, Verlauf und mehr. Jederzeit kündbar.",
     "paywall.trial.ended": "Ihre Testversion ist abgelaufen",
     "paywall.daily.limit": "Tageslimit erreicht",
     "paywall.upgrade": "Upgrade auf einen kostenpflichtigen Plan, um VERDICT weiter zu nutzen.",
@@ -696,7 +848,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     "hero.subtitle": "VERDICT è uno strato di sicurezza AI che rileva errori, rischi e decisioni sbagliate prima che ti costino denaro, tempo o reputazione.",
     "hero.cta.trial": "Prova gratuita",
     "hero.cta.how": "Come funziona",
-    "hero.trial.info": "5 giorni di prova gratuita • 5 analisi al giorno • Annulla in qualsiasi momento",
+    "hero.trial.info": "3 giorni di prova gratuita • 1 analisi al giorno • Nessuna carta richiesta",
+    "hero.disclaimer": "VERDICT NON è un avvocato e NON fornisce consulenza legale. Spieghiamo, analizziamo, evidenziamo i rischi e aiutiamo a redigere risposte — solo a scopo informativo.",
 
     // Social proof
     "social.rating": "Valutazione media",
@@ -721,14 +874,27 @@ export const translations: Record<Locale, Record<string, string>> = {
     "solution.step3.title": "Correggi prima di inviare",
     "solution.step3.desc": "Copia il testo corretto. Invia con fiducia.",
 
+    // Use cases
+    "usecase.title": "Come VERDICT aiuta",
+    "usecase.subtitle": "Guida calma quando ne hai bisogno.",
+    "usecase.scary.email.title": "Hai ricevuto un'email preoccupante?",
+    "usecase.scary.email.desc": "Incollala. VERDICT spiega il significato, evidenzia i rischi e ti aiuta a redigere una risposta calma e sicura. Nessun linguaggio allarmante.",
+    "usecase.contract.title": "Incertezza su un contratto?",
+    "usecase.contract.desc": "VERDICT lo semplifica in linguaggio chiaro. Segnala termini poco chiari e rischi. Ti aiuta a chiedere chiarimenti. Non consulenza legale — guida.",
+    "usecase.pressure.title": "Sotto pressione per pagare?",
+    "usecase.pressure.desc": "La modalità anti-truffa rileva tattiche di pressione, minacce di urgenza, linguaggio legale vago e falsa autorità. Ti aiuta a restare calmo e a proteggerti.",
+    "usecase.scam.title": "Paura di essere truffato?",
+    "usecase.scam.desc": "VERDICT segnala i campanelli d'allarme — pressione, falsa urgenza, termini poco chiari. Spiega i tuoi diritti. Raccomanda i prossimi passi. Protettivo, non allarmista.",
+
     // What VERDICT analyzes
     "analyzes.title": "Cosa analizza VERDICT",
-    "analyzes.subtitle": "Qualsiasi testo che potrebbe costarti se è sbagliato.",
+    "analyzes.subtitle": "Email, lettere, avvisi legali, contratti, messaggi o situazioni in testo semplice.",
     "analyzes.emails": "Email",
+    "analyzes.letters": "Lettere",
+    "analyzes.legal_notices": "Avvisi legali",
     "analyzes.contracts": "Contratti",
-    "analyzes.decisions": "Decisioni aziendali",
     "analyzes.messages": "Messaggi sensibili",
-    "analyzes.documents": "Documenti importanti",
+    "analyzes.situations": "Situazioni (testo semplice)",
 
     // AI Transparency
     "ai.title": "Come pensa l'AI",
@@ -736,11 +902,21 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ai.1": "Non indovina. Segnala cosa potrebbe andare storto in base al tuo testo.",
     "ai.2": "Evidenzia i rischi — legali, finanziari, reputazionali — con etichette chiare.",
     "ai.3": "Spiega perché qualcosa è rischioso o poco chiaro.",
-    "ai.4": "Suggerisce alternative più sicure e una versione corretta che puoi copiare.",
+    "ai.4": "Generatore di risposte: sicuro, fermo, neutrale o richiesta di chiarimenti — risposte calme e professionali da copiare.",
+    "ai.trained": "IA addestrata su casi legali reali — non un avvocato ma un assistente affidabile.",
+
+    // Compare
+    "compare.title": "Con o senza VERDICT",
+    "compare.with": "Con VERDICT",
+    "compare.with.desc": "Analisi chiara, rischi identificati, risposta proposta pronta da inviare.",
+    "compare.without": "Senza VERDICT",
+    "compare.without.desc": "Stress, dubbi, rischio di decisione sbagliata o truffa.",
 
     // Example
     "example.title": "Esempio di output",
     "example.subtitle": "Realistico. Niente marketing.",
+    "example.recouvrement": "Email di recupero crediti",
+    "example.assurance": "Lettera assicurativa",
     "example.input": "Testo di input",
     "example.errors": "❌ Errori critici",
     "example.risks": "⚠️ Rischi",
@@ -749,7 +925,12 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Who it's for
     "who.title": "Per chi?",
-    "who.subtitle": "Chiunque prenda decisioni importanti con le parole.",
+    "who.subtitle": "Chiunque abbia bisogno di una guida calma e protettiva — soprattutto chi non può permettersi un avvocato.",
+    "who.role1": "Chi non può permettersi un avvocato",
+    "who.role2": "Freelancer",
+    "who.role3": "Piccoli imprenditori",
+    "who.role4": "Consumatori",
+    "who.role5": "Chi è incerto su un messaggio",
 
     // Why people stay
     "why.title": "Perché le persone restano abbonate",
@@ -762,8 +943,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     // Pricing
     "pricing.title": "Prezzi",
     "pricing.subtitle": "Molto chiaro. Solo mensile. Annulla in qualsiasi momento. Pagamento sicuro tramite Stripe.",
-    "pricing.trial": "5 giorni di prova gratuita",
-    "pricing.trial.desc": "5 analisi al giorno • Nessuna carta di credito richiesta.",
+    "pricing.trial": "3 giorni di prova gratuita",
+    "pricing.trial.desc": "1 analisi al giorno • Nessuna carta richiesta.",
     "pricing.starter": "Starter",
     "pricing.pro": "Pro",
     "pricing.premium": "Premium",
@@ -795,7 +976,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "faq.q2": "Posso fidarmi dell'AI?",
     "faq.a2": "VERDICT è progettato per essere preciso e trasparente. Spiega perché segnala qualcosa e suggerisce alternative. Usalo come un secondo paio di occhi, non come l'autorità finale.",
     "faq.q3": "Cosa succede dopo la prova?",
-    "faq.a3": "Dopo 5 giorni, puoi abbonarti a Starter o Pro. Se non ti abboni, non ti verrà addebitato nulla. Puoi sempre creare un account e fare l'upgrade in seguito.",
+    "faq.a3": "Dopo 3 giorni, puoi abbonarti a Starter, Pro o Premium. Se non ti abboni, non ti verrà addebitato nulla. Puoi creare un account e fare l'upgrade in seguito.",
     "faq.q4": "Posso annullare in qualsiasi momento?",
     "faq.a4": "Sì. Annulla dal tuo account. Nessuna domanda. Mantieni l'accesso fino alla fine del tuo periodo di fatturazione.",
     "faq.q5": "I miei dati sono al sicuro?",
@@ -803,7 +984,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Final CTA
     "cta.title": "Ottieni il tuo verdict prima che conti.",
-    "cta.subtitle": "Inizia la tua prova gratuita di 5 giorni. Nessuna carta di credito richiesta.",
+    "cta.subtitle": "Inizia la tua prova gratuita di 3 giorni. Nessuna carta richiesta.",
 
     // Footer
     "footer.tagline": "Prima di inviare — ottieni un verdict.",
@@ -817,17 +998,32 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Dashboard
     "dashboard.title": "Dashboard",
+    "dashboard.subtitle": "Il tuo utilizzo e azioni rapide.",
     "dashboard.welcome": "Benvenuto",
+    "dashboard.usage": "Utilizzo",
     "dashboard.trial": "Prova gratuita",
     "dashboard.days.left": "giorni rimasti",
     "dashboard.analyses.left": "analisi rimaste oggi",
+    "dashboard.analyses.of": "di 1 rimasta oggi",
+    "dashboard.on.your.plan": "Nel tuo piano",
     "dashboard.unlimited": "Illimitato",
     "dashboard.plan": "Piano",
+    "dashboard.upgrade": "Upgrade",
     "dashboard.analyze.cta": "Nuova analisi",
+    "dashboard.view.past": "Vedi analisi passate",
+    "dashboard.available.on.pro": "Disponibile con Pro",
+    "dashboard.account.billing": "Account e fatturazione",
+    "dashboard.manage.subscription": "Gestisci abbonamento",
+    "dashboard.trial.message": "Per garantire qualità e prevenire abusi, la prova è limitata.",
+    "dashboard.trial.day": "Giorno {day}",
+    "dashboard.trial.used": "{used}/1 usata",
+    "dashboard.trial.remaining": "1/1 rimasta",
+    "dashboard.trial.last": "Ultima prova",
 
     // Analyze
     "analyze.title": "Analizza",
-    "analyze.subtitle": "Incolla la tua email, contratto o messaggio. VERDICT identificherà errori critici, rischi, possibili miglioramenti e fornirà una versione corretta.",
+    "analyze.subtitle": "Incolla la tua email, lettera, contratto, avviso legale o situazione. VERDICT spiega, evidenzia i rischi e ti aiuta a redigere risposte sicure.",
+    "analyze.disclaimer": "VERDICT NON è un avvocato e NON fornisce consulenza legale. Solo a scopo informativo.",
     "analyze.placeholder": "Incolla qui la tua email, contratto o messaggio...",
     "analyze.button": "Analizza",
     "analyze.analyzing": "Analizzando...",
@@ -835,6 +1031,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     "analyze.remaining.today": "rimaste oggi",
     "analyze.trial": "Prova",
     "analyze.days.left": "giorni rimasti",
+    "analyze.paste.required": "Incolla del testo da analizzare.",
+    "analyze.paywall.daily": "Limite giornaliero raggiunto. Upgrade o riprova domani.",
+    "analyze.paywall.trial": "Prova terminata. Upgrade per continuare.",
+    "analyze.paywall.generic": "Esegui l'upgrade per continuare.",
+    "analyze.usage.format": "Giorno {day}: {count}/1 usata · {days} giorni rimasti",
 
     // Results
     "result.errors": "Errori critici",
@@ -892,6 +1093,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     "auth.login.link": "Accedi",
 
     // Paywall
+    "paywall.title": "Upgrade per continuare",
+    "paywall.body": "Abbonati per sbloccare analisi illimitate, cronologia e altro. Annulla in qualsiasi momento.",
     "paywall.trial.ended": "La tua prova è terminata",
     "paywall.daily.limit": "Limite giornaliero raggiunto",
     "paywall.upgrade": "Passa a un piano a pagamento per continuare a usare VERDICT.",

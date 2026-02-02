@@ -2,6 +2,7 @@ import Link from "next/link";
 import { signIn } from "@/app/actions/auth";
 import Button from "@/components/ui/Button";
 import { Nav } from "@/components/layout/Nav";
+import { getLocaleFromCookies, getServerTranslation } from "@/lib/i18n/server";
 
 export default async function LoginPage({
   searchParams,
@@ -9,13 +10,16 @@ export default async function LoginPage({
   searchParams: Promise<{ message?: string; error?: string }>;
 }) {
   const params = await searchParams;
+  const locale = await getLocaleFromCookies();
+  const t = getServerTranslation(locale);
+
   return (
     <div className="min-h-screen bg-verdict-off-white">
       <Nav />
       <main className="pt-24 pb-12">
         <div className="mx-auto max-w-md px-4">
           <div className="rounded-2xl border border-verdict-gray-200 bg-white p-8 shadow-card">
-            <h1 className="text-2xl font-semibold text-verdict-gray-900">Log in</h1>
+            <h1 className="text-2xl font-semibold text-verdict-gray-900">{t("auth.login")}</h1>
             <p className="mt-2 text-verdict-gray-600">
               Enter your VERDICT account to continue.
             </p>
@@ -36,7 +40,7 @@ export default async function LoginPage({
             <form action={signIn} className="mt-6 space-y-4">
               <div>
                 <label htmlFor="email" className="mb-1 block text-sm font-medium text-verdict-gray-700">
-                  Email
+                  {t("auth.email")}
                 </label>
                 <input
                   id="email"
@@ -50,7 +54,7 @@ export default async function LoginPage({
               </div>
               <div>
                 <label htmlFor="password" className="mb-1 block text-sm font-medium text-verdict-gray-700">
-                  Password
+                  {t("auth.password")}
                 </label>
                 <input
                   id="password"
@@ -62,14 +66,14 @@ export default async function LoginPage({
                 />
               </div>
               <Button type="submit" fullWidth size="lg">
-                Log in
+                {t("auth.login.button")}
               </Button>
             </form>
 
             <p className="mt-6 text-center text-sm text-verdict-gray-500">
-              Don&apos;t have an account?{" "}
+              {t("auth.no.account")}{" "}
               <Link href="/auth/signup" className="font-medium text-verdict-red hover:underline">
-                Sign up
+                {t("auth.create")}
               </Link>
             </p>
           </div>

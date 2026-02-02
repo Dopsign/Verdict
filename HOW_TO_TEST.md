@@ -61,11 +61,11 @@ En résumé : **mode test Stripe + carte 4242... = tout tester sans payer. Vous 
    - You should get a verdict (errors, risks, improvements, corrected version).
    - After each analysis, the usage counter on the dashboard should update (e.g. “4 left today”).
 5. **Hit daily limit (optional):**
-   - Run 5 analyses in the same day. The 6th should show the paywall (e.g. “Daily limit reached” or “Upgrade to continue”).
+   - Run 1 analysis. The 2nd same-day attempt should show the paywall (e.g. “Daily limit reached” or “Upgrade to continue”).
 6. **Trial expiry (optional):**
-   - In Supabase, edit the `profiles` row for your user: set `trial_start_date` to 6 days ago. Reload the app; you should see “Trial ended” and be prompted to subscribe.
+   - In Supabase, edit the `profiles` row for your user: set `trial_start_date` to 4 days ago. Reload the app; you should see “Trial ended” and be prompted to subscribe.
 
-**Success:** New users get 5 days of trial and 5 analyses per day; usage is visible and the paywall appears when the limit is reached or the trial has ended.
+**Success:** New users get 3 days of trial and 1 analysis per day; usage is visible and the paywall appears when the limit is reached or the trial has ended.
 
 ---
 
@@ -121,7 +121,7 @@ En résumé : **mode test Stripe + carte 4242... = tout tester sans payer. Vous 
 
 - [ ] **Landing:** Hero, trust, problem, solution, what VERDICT analyzes, AI transparency, example, pricing (3 plans CHF), security, FAQ, footer with legal and contact links.
 - [ ] **Auth:** Sign up, log in, sign out; redirects and session work.
-- [ ] **Trial:** 5 days, 5 analyses/day; counters and paywall behave as above.
+- [ ] **Trial:** 3 days, 1 analysis/day; counters (Day 1/2/3, 1/1 used/remaining) and paywall behave as above.
 - [ ] **Analyze:** Paste text → verdict (errors, risks, improvements, corrected version); usage increments; paywall when limit or trial ended.
 - [ ] **Pricing:** 3 plans (Starter 9.99 CHF, Pro 19.99 CHF, Premium 39.99 CHF); links to signup/account with plan param.
 - [ ] **Account:** Plan selector (Starter / Pro / Premium), “Subscribe with Stripe”, redirect to Checkout; after payment, plan shown and “Open Stripe Customer Portal” works.
@@ -132,7 +132,7 @@ En résumé : **mode test Stripe + carte 4242... = tout tester sans payer. Vous 
 
 ### 4.3 Quick local test (no Stripe)
 
-- Sign up → use 5 analyses → see paywall when daily limit reached.
+- Sign up → use 1 analysis → see paywall when daily limit reached (2nd same-day attempt).
 - In Supabase, set `profiles.subscription_status` to `pro` for your user → reload; History should be accessible and analyses unlimited.
 
 ---
@@ -141,7 +141,7 @@ En résumé : **mode test Stripe + carte 4242... = tout tester sans payer. Vous 
 
 | What to test        | How |
 |---------------------|-----|
-| **Free trial**      | Sign up, run analyses, check counters and paywall at 5/day or after trial end. |
+| **Free trial**      | Sign up, run 1 analysis/day for 3 days; check Day 1/2/3 counters and paywall when limit reached or trial ended. |
 | **Stripe payments** | Use test card on Checkout for Starter/Pro/Premium; confirm redirect and success message. |
 | **Subscription**   | Account shows correct plan; Starter = limited analyses, no history; Pro/Premium = unlimited + history. |
 | **Webhook**         | After subscribe/cancel, check Stripe webhook logs and `profiles.subscription_status` in Supabase. |

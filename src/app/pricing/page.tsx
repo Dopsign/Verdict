@@ -2,52 +2,28 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { Nav } from "@/components/layout/Nav";
 import Button from "@/components/ui/Button";
+import { getLocaleFromCookies, getServerTranslation } from "@/lib/i18n/server";
 
 const PLANS = [
   {
     id: "starter",
-    name: "Starter",
     price: "9.99",
     currency: "CHF",
-    period: "/mo",
-    description: "Limited usage. Personal use.",
-    features: [
-      "Limited usage",
-      "Personal use",
-      "Email support",
-    ],
-    cta: "Get Starter",
+    featureKeys: ["pricing.limited", "pricing.personal", "pricing.email.support"],
     highlighted: false,
   },
   {
     id: "pro",
-    name: "Pro",
     price: "19.99",
     currency: "CHF",
-    period: "/mo",
-    description: "Unlimited analyses + history + priority.",
-    features: [
-      "Unlimited analyses",
-      "History",
-      "Priority processing",
-    ],
-    cta: "Get Pro",
+    featureKeys: ["pricing.unlimited", "pricing.history", "pricing.priority"],
     highlighted: true,
   },
   {
     id: "premium",
-    name: "Premium",
     price: "39.99",
     currency: "CHF",
-    period: "/mo",
-    description: "Unlimited + advanced analysis + priority support.",
-    features: [
-      "Unlimited",
-      "Advanced analysis",
-      "Priority support",
-      "Early features",
-    ],
-    cta: "Get Premium",
+    featureKeys: ["pricing.unlimited", "pricing.advanced", "pricing.priority.support", "pricing.early"],
     highlighted: false,
   },
 ] as const;
@@ -55,6 +31,8 @@ const PLANS = [
 export default async function PricingPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
+  const locale = await getLocaleFromCookies();
+  const t = getServerTranslation(locale);
 
   return (
     <div className="min-h-screen bg-verdict-off-white">
@@ -62,17 +40,17 @@ export default async function PricingPage() {
 
       <main className="mx-auto max-w-6xl px-4 pt-24 pb-20">
         <h1 className="text-center text-2xl font-semibold text-verdict-gray-900 sm:text-3xl">
-          Simple, transparent pricing
+          {t("pricing.title")}
         </h1>
         <p className="mt-3 text-center text-verdict-gray-600">
-          Very clear. Monthly only. Cancel anytime. Secure payment via Stripe.
+          {t("pricing.subtitle")}
         </p>
 
         {/* Trial clarity */}
         <div className="mt-8 rounded-2xl border border-verdict-gray-200 bg-white p-6 text-center shadow-card sm:mx-auto sm:max-w-xl">
-          <p className="font-medium text-verdict-gray-900">5-day free trial</p>
+          <p className="font-medium text-verdict-gray-900">{t("pricing.trial")}</p>
           <p className="mt-1 text-sm text-verdict-gray-600">
-            Max 5 analyses per day during trial. No credit card required.
+            {t("pricing.trial.desc")}
           </p>
         </div>
 
@@ -88,20 +66,19 @@ export default async function PricingPage() {
             >
               {plan.highlighted && (
                 <span className="inline-block rounded-full bg-verdict-red/10 px-3 py-1 text-xs font-semibold text-verdict-red">
-                  Pro
+                  {t("pricing.pro")}
                 </span>
               )}
               <h2 className={`${plan.highlighted ? "mt-3" : ""} text-xl font-semibold text-verdict-gray-900`}>
-                {plan.name}
+                {t(`pricing.${plan.id}`)}
               </h2>
-              <p className="mt-2 text-sm text-verdict-gray-600">{plan.description}</p>
               <p className="mt-6 text-3xl font-semibold text-verdict-gray-900">
                 {plan.price} {plan.currency}
-                <span className="text-base font-normal text-verdict-gray-500">{plan.period}</span>
+                <span className="text-base font-normal text-verdict-gray-500">{t("pricing.mo")}</span>
               </p>
               <ul className="mt-6 space-y-3 text-sm text-verdict-gray-700">
-                {plan.features.map((f) => (
-                  <li key={f}>✓ {f}</li>
+                {plan.featureKeys.map((key) => (
+                  <li key={key}>✓ {t(key)}</li>
                 ))}
               </ul>
               <Link
@@ -112,7 +89,7 @@ export default async function PricingPage() {
                   fullWidth
                   variant={plan.highlighted ? "primary" : "secondary"}
                 >
-                  {plan.cta}
+                  {t("pricing.get")} {t(`pricing.${plan.id}`)}
                 </Button>
               </Link>
             </div>
@@ -120,7 +97,7 @@ export default async function PricingPage() {
         </div>
 
         <p className="mt-12 text-center text-sm text-verdict-gray-500">
-          Secure payments via Stripe. Cancel anytime.
+          {t("pricing.secure")}
         </p>
       </main>
     </div>
