@@ -6,7 +6,7 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
-export type SubscriptionTier = "free" | "starter" | "pro" | null;
+export type SubscriptionTier = "free" | "starter" | "pro" | "premium" | null;
 
 export interface Database {
   public: {

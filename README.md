@@ -4,7 +4,18 @@ AI-powered error and risk detector. Prevents costly mistakes before users send e
 
 - **Tech:** Next.js 14 (App Router), TypeScript, Tailwind CSS, Supabase, OpenAI, Stripe
 - **Trial:** 5 days free, max 5 analyses per day
-- **Plans:** Starter (unlimited analyses), Pro (unlimited + history + priority)
+- **Plans:** Starter (9.99 CHF, limited usage), Pro (19.99 CHF, unlimited + history + priority), Premium (39.99 CHF, unlimited + advanced + priority support)
+
+---
+
+## Testing
+
+See **[HOW_TO_TEST.md](./HOW_TO_TEST.md)** for:
+
+- How to test the free trial (5 days, 5 analyses/day, paywall).
+- How to test Stripe payments (Checkout, test card, 3 plans).
+- How to verify subscription access (Starter vs Pro vs Premium).
+- How to confirm webhooks and that everything works end-to-end.
 
 ---
 
@@ -45,10 +56,10 @@ Open [http://localhost:3000](http://localhost:3000).
    NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
    SUPABASE_SERVICE_ROLE_KEY=eyJ...
    ```
-4. Run the database migration:
+4. Run the database migrations (in order):
    - In Supabase Dashboard go to **SQL Editor**.
-   - Paste and run the contents of `supabase/migrations/001_initial_schema.sql`.
-   - This creates `profiles`, `analyses`, RLS, trigger for new users, and `increment_usage` RPC.
+   - Run `supabase/migrations/001_initial_schema.sql` (creates `profiles`, `analyses`, RLS, trigger, `increment_usage` RPC).
+   - Run `supabase/migrations/002_add_premium_tier.sql` (adds `premium` to subscription_status).
 
 ---
 
@@ -59,9 +70,10 @@ Open [http://localhost:3000](http://localhost:3000).
    ```env
    STRIPE_SECRET_KEY=sk_test_...
    ```
-3. Create two products/prices in Stripe:
-   - **Starter** (e.g. $9/mo recurring) → copy **Price ID** (e.g. `price_xxx`) → `STRIPE_PRICE_STARTER`
-   - **Pro** (e.g. $19/mo recurring) → copy **Price ID** → `STRIPE_PRICE_PRO`
+3. Create three products/prices in Stripe (e.g. CHF recurring):
+   - **Starter** (e.g. 9.99 CHF/mo) → copy **Price ID** → `STRIPE_PRICE_STARTER`
+   - **Pro** (e.g. 19.99 CHF/mo) → copy **Price ID** → `STRIPE_PRICE_PRO`
+   - **Premium** (e.g. 39.99 CHF/mo) → copy **Price ID** → `STRIPE_PRICE_PREMIUM`
 4. Webhook (so subscription status updates in Supabase):
    - **Developers → Webhooks → Add endpoint**
    - URL: `https://your-domain.com/api/stripe/webhook` (use your Vercel URL in production)
@@ -84,6 +96,12 @@ Open [http://localhost:3000](http://localhost:3000).
    - Stripe webhook URL: `https://your-app.vercel.app/api/stripe/webhook`
 5. Deploy. After first deploy, add the webhook URL in Stripe and set `STRIPE_WEBHOOK_SECRET`.
 6. In Supabase **Authentication → URL Configuration**, set **Site URL** to your Vercel URL and add `https://your-app.vercel.app/auth/callback` to **Redirect URLs**.
+
+---
+
+## Logo
+
+The site uses a built-in logo (red shield + VERDICT wordmark) that works on light backgrounds. To use your own logo image (e.g. the one with dark background), place `logo.png` in `public/` and you can reference it with `<Image src="/logo.png" />` in the hero or footer. For the nav on a light background, the current Logo component uses dark text; for a dark hero strip you could use the image.
 
 ---
 

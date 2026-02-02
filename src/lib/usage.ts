@@ -3,6 +3,8 @@ import type { Profile } from "@/lib/types/database";
 
 const TRIAL_DAYS = 5;
 const TRIAL_DAILY_LIMIT = 5;
+/** Starter plan: limited analyses per day */
+const STARTER_DAILY_LIMIT = 20;
 
 export interface UsageState {
   canAnalyze: boolean;
@@ -71,14 +73,29 @@ export async function getUsageState(userId: string): Promise<UsageState> {
   }
 
   const p = (await ensureDailyReset(profile as Profile)) ?? (profile as Profile);
-  const isPaid = p.subscription_status === "starter" || p.subscription_status === "pro";
+  const isPaid =
+    p.subscription_status === "starter" ||
+    p.subscription_status === "pro" ||
+    p.subscription_status === "premium";
 
   if (isPaid) {
+    // Starter: limited per day; Pro & Premium: unlimited
+    if (p.subscription_status === "starter") {
+      const left = Math.max(0, STARTER_DAILY_LIMIT - p.daily_usage_count);
+      return {
+        canAnalyze: left > 0,
+        reason: left === 0 ? "daily_limit" : undefined,
+        profile: p as Profile,
+        trialDaysLeft: 0,
+        analysesLeftToday: left,
+        isPaid: true,
+      };
+    }
     return {
       canAnalyze: true,
       profile: p as Profile,
       trialDaysLeft: 0,
-      analysesLeftToday: -1, // unlimited
+      analysesLeftToday: -1, // unlimited (Pro & Premium)
       isPaid: true,
     };
   }

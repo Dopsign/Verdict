@@ -35,7 +35,14 @@ export async function POST(req: Request) {
     case "customer.subscription.updated": {
       const sub = event.data.object as Stripe.Subscription;
       const userId = sub.metadata?.supabase_user_id;
-      const plan = sub.metadata?.plan ?? (sub.items.data[0]?.price?.id === process.env.STRIPE_PRICE_PRO ? "pro" : "starter");
+      const priceId = sub.items.data[0]?.price?.id;
+      const plan =
+        sub.metadata?.plan ??
+        (priceId === process.env.STRIPE_PRICE_PREMIUM
+          ? "premium"
+          : priceId === process.env.STRIPE_PRICE_PRO
+            ? "pro"
+            : "starter");
       if (userId && ["active", "trialing"].includes(sub.status)) {
         await supabaseAdmin
           .from("profiles")

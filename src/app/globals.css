@@ -3,39 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --verdict-bg: #0a0a0a;
-  --verdict-charcoal: #171717;
-  --verdict-red: #ff2d2d;
-  --verdict-red-dim: #cc2424;
+  --verdict-bg: #ffffff;
+  --verdict-off-white: #fafafa;
+  --verdict-red: #d32f2f;
+  --verdict-blue: #2563eb;
 }
 
 body {
-  @apply bg-verdict-black text-white antialiased;
+  @apply bg-white text-gray-900 antialiased;
   background-color: var(--verdict-bg);
 }
 
-/* Smooth transitions for interactive elements */
 @layer utilities {
   .transition-smooth {
     @apply transition-all duration-200 ease-out;
   }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #171717;
+  background: #f3f4f6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #d1d5db;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: #9ca3af;
 }

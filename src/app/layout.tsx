@@ -13,9 +13,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VERDICT — AI-Powered Error & Risk Detector",
+  title: "VERDICT — Before you send it, get a verdict.",
   description:
-    "The AI that detects mistakes, risks, and bad decisions before they cost you money, time, or reputation.",
+    "The calm, precise AI that detects mistakes, risks, and bad decisions before they cost you money, time, or reputation. Built for professionals.",
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="min-h-screen font-sans">{children}</body>
+      <body className="min-h-screen font-sans text-verdict-gray-900">{children}</body>
     </html>
   );
 }

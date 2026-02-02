@@ -7,9 +7,10 @@ import { redirect } from "next/navigation";
 // Stripe keys: use env placeholders. Set STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET in production.
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "sk_test_placeholder");
 
-const PRICE_IDS = {
+const PRICE_IDS: Record<string, string> = {
   starter: process.env.STRIPE_PRICE_STARTER ?? "price_placeholder_starter",
   pro: process.env.STRIPE_PRICE_PRO ?? "price_placeholder_pro",
+  premium: process.env.STRIPE_PRICE_PREMIUM ?? "price_placeholder_premium",
 };
 
 export async function createCheckoutSession(formData: FormData) {

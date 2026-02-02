@@ -37,11 +37,11 @@ export default async function HistoryDetailPage({
     <div className="mx-auto max-w-3xl px-4 py-12">
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <Link href="/history" className="text-sm text-white/60 hover:text-white">
+          <Link href="/history" className="text-sm text-verdict-gray-500 hover:text-verdict-gray-900">
             ← History
           </Link>
-          <h1 className="mt-2 text-2xl font-bold text-white">Analysis</h1>
-          <p className="mt-1 text-sm text-white/50">{date}</p>
+          <h1 className="mt-2 text-2xl font-semibold text-verdict-gray-900">Analysis</h1>
+          <p className="mt-1 text-sm text-verdict-gray-500">{date}</p>
         </div>
         <Link href="/analyze">
           <Button variant="secondary" size="sm">
@@ -52,62 +52,62 @@ export default async function HistoryDetailPage({
 
       <div className="space-y-6">
         <Card>
-          <h3 className="mb-2 font-semibold text-white/80">Original text</h3>
-          <div className="whitespace-pre-wrap rounded-lg border border-white/10 bg-verdict-black/50 p-4 text-sm text-white/80">
+          <h3 className="mb-2 font-semibold text-verdict-gray-900">Original text</h3>
+          <div className="whitespace-pre-wrap rounded-xl border border-verdict-gray-200 bg-verdict-gray-50 p-4 text-sm text-verdict-gray-900">
             {row.input_text}
           </div>
         </Card>
 
-        <Card className="border-red-500/20">
-          <h3 className="mb-2 flex items-center gap-2 font-semibold text-red-400">
+        <Card className="border-red-200 bg-red-50/50">
+          <h3 className="mb-2 flex items-center gap-2 font-semibold text-red-700">
             ❌ Critical Errors
           </h3>
           {result?.criticalErrors?.length ? (
-            <ul className="list-inside list-disc space-y-1 text-sm text-white/90">
+            <ul className="list-inside list-disc space-y-1 text-sm text-red-900">
               {result.criticalErrors.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
             </ul>
           ) : (
-            <p className="text-sm text-white/60">None.</p>
+            <p className="text-sm text-verdict-gray-500">None.</p>
           )}
         </Card>
 
-        <Card className="border-amber-500/20">
-          <h3 className="mb-2 flex items-center gap-2 font-semibold text-amber-400">
+        <Card className="border-amber-200 bg-amber-50/50">
+          <h3 className="mb-2 flex items-center gap-2 font-semibold text-amber-800">
             ⚠️ Risks
           </h3>
           {result?.risks?.length ? (
-            <ul className="list-inside list-disc space-y-1 text-sm text-white/90">
+            <ul className="list-inside list-disc space-y-1 text-sm text-amber-900">
               {result.risks.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
             </ul>
           ) : (
-            <p className="text-sm text-white/60">None.</p>
+            <p className="text-sm text-verdict-gray-500">None.</p>
           )}
         </Card>
 
-        <Card className="border-green-500/20">
-          <h3 className="mb-2 flex items-center gap-2 font-semibold text-green-400">
+        <Card className="border-green-200 bg-green-50/50">
+          <h3 className="mb-2 flex items-center gap-2 font-semibold text-green-800">
             ✅ Improvements
           </h3>
           {result?.improvements?.length ? (
-            <ul className="list-inside list-disc space-y-1 text-sm text-white/90">
+            <ul className="list-inside list-disc space-y-1 text-sm text-green-900">
               {result.improvements.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
             </ul>
           ) : (
-            <p className="text-sm text-white/60">None.</p>
+            <p className="text-sm text-verdict-gray-500">None.</p>
           )}
         </Card>
 
         <Card>
-          <h3 className="mb-2 flex items-center gap-2 font-semibold text-white">
+          <h3 className="mb-2 flex items-center gap-2 font-semibold text-verdict-gray-900">
             ✍️ Corrected Version
           </h3>
-          <div className="whitespace-pre-wrap rounded-lg border border-white/10 bg-verdict-black/50 p-4 text-sm text-white/90">
+          <div className="whitespace-pre-wrap rounded-xl border border-verdict-gray-200 bg-verdict-gray-50 p-4 text-sm text-verdict-gray-900">
             {result?.correctedVersion ?? "—"}
           </div>
         </Card>

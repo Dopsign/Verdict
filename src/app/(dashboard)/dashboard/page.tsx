@@ -15,33 +15,36 @@ export default async function DashboardPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
-      <h1 className="mb-2 text-3xl font-bold text-white">Dashboard</h1>
-      <p className="mb-8 text-white/60">
+      <h1 className="text-2xl font-semibold text-verdict-gray-900">Dashboard</h1>
+      <p className="mt-1 text-verdict-gray-600">
         Your usage and quick actions.
       </p>
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        <Card>
-          <CardHeader title="Usage" subtitle="This period" />
+      {/* Usage indicator — clear, calm */}
+      <div className="mt-8 flex flex-wrap gap-4">
+        <div className="flex-1 min-w-[200px] rounded-2xl border border-verdict-gray-200 bg-white p-6 shadow-card">
+          <p className="text-sm font-medium text-verdict-gray-500">Usage</p>
           {usage.isPaid ? (
-            <p className="text-white/80">Unlimited analyses on your plan.</p>
+            <>
+              <p className="mt-2 text-lg font-semibold text-verdict-gray-900">Unlimited analyses</p>
+              <p className="mt-1 text-sm text-verdict-gray-500">On your plan</p>
+            </>
           ) : (
             <>
-              <p className="text-white/80">
+              <p className="mt-2 text-lg font-semibold text-verdict-gray-900">
                 {usage.analysesLeftToday === -1
                   ? "Unlimited"
                   : `${usage.analysesLeftToday} of 5 analyses left today`}
               </p>
-              <p className="mt-2 text-sm text-white/50">
+              <p className="mt-1 text-sm text-verdict-gray-500">
                 Trial: {usage.trialDaysLeft} days left
               </p>
             </>
           )}
-        </Card>
-
-        <Card>
-          <CardHeader title="Plan" subtitle="Subscription" />
-          <p className="text-white/80 capitalize">
+        </div>
+        <div className="flex-1 min-w-[200px] rounded-2xl border border-verdict-gray-200 bg-white p-6 shadow-card">
+          <p className="text-sm font-medium text-verdict-gray-500">Plan</p>
+          <p className="mt-2 text-lg font-semibold text-verdict-gray-900 capitalize">
             {usage.profile?.subscription_status ?? "Free trial"}
           </p>
           <Link href="/pricing" className="mt-4 inline-block">
@@ -49,9 +52,10 @@ export default async function DashboardPage() {
               Upgrade
             </Button>
           </Link>
-        </Card>
+        </div>
       </div>
 
+      {/* Large New Analysis CTA */}
       <div className="mt-10">
         <Link href="/analyze">
           <Button size="lg" className="w-full sm:w-auto">
@@ -60,13 +64,14 @@ export default async function DashboardPage() {
         </Link>
       </div>
 
+      {/* Calm empty-state style links */}
       <div className="mt-12 grid gap-4 sm:grid-cols-2">
         <Link
           href="/history"
-          className="block rounded-xl border border-white/10 bg-verdict-charcoal/50 p-4 transition-smooth hover:border-white/20"
+          className="block rounded-2xl border border-verdict-gray-200 bg-white p-5 shadow-card transition-smooth hover:shadow-elevated"
         >
-          <span className="font-semibold text-white">History</span>
-          <p className="mt-1 text-sm text-white/50">
+          <span className="font-semibold text-verdict-gray-900">History</span>
+          <p className="mt-1 text-sm text-verdict-gray-500">
             {usage.profile?.subscription_status === "pro"
               ? "View past analyses"
               : "Available on Pro"}
@@ -74,10 +79,10 @@ export default async function DashboardPage() {
         </Link>
         <Link
           href="/account"
-          className="block rounded-xl border border-white/10 bg-verdict-charcoal/50 p-4 transition-smooth hover:border-white/20"
+          className="block rounded-2xl border border-verdict-gray-200 bg-white p-5 shadow-card transition-smooth hover:shadow-elevated"
         >
-          <span className="font-semibold text-white">Account & Billing</span>
-          <p className="mt-1 text-sm text-white/50">Manage subscription</p>
+          <span className="font-semibold text-verdict-gray-900">Account & Billing</span>
+          <p className="mt-1 text-sm text-verdict-gray-500">Manage subscription</p>
         </Link>
       </div>
     </div>

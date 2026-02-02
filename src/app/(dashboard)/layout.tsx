@@ -17,7 +17,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-verdict-black">
+    <div className="min-h-screen bg-verdict-off-white">
       <Nav authenticated email={user.email ?? null} />
       <main className="pt-20">{children}</main>
     </div>

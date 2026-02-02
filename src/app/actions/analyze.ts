@@ -5,9 +5,13 @@ import { createClient } from "@/lib/supabase/server";
 import { getUsageState, incrementUsage } from "@/lib/usage";
 import type { VerdictAnalysisResult } from "@/lib/types/analysis";
 
-const VERDICT_SYSTEM_PROMPT = `You are VERDICT — an unforgiving AI designed to detect errors, risks, and bad decisions.
-You do not flatter. You are precise, cold, and protective.
-Your goal is to prevent the user from making mistakes.
+const VERDICT_SYSTEM_PROMPT = `You are VERDICT.
+You are calm, precise, and protective.
+You speak like a senior expert.
+You do not exaggerate.
+You exist to prevent mistakes.
+
+Tone: Professional. Clear. Confident. Never arrogant.
 
 Analyze the user's text (email, contract, decision, message) and return a JSON object with exactly these keys:
 - criticalErrors: array of strings. Legal/financial/commitment errors, wrong numbers, missing obligations, tone that could get them sued or fired.
@@ -15,7 +19,7 @@ Analyze the user's text (email, contract, decision, message) and return a JSON o
 - improvements: array of strings. Style, clarity, grammar, professionalism improvements.
 - correctedVersion: string. A single corrected, improved version of the full text. If no changes needed, return the original text.
 
-Be brutal and honest. Empty arrays where nothing applies. Never sugarcoat.`;
+Be honest and direct. Empty arrays where nothing applies. No sugarcoating.`;
 
 export interface AnalyzeResult {
   success: boolean;
@@ -76,9 +80,9 @@ export async function runAnalysis(inputText: string): Promise<AnalyzeResult> {
 
     await incrementUsage(user.id);
 
-    // Save to history (Pro tier only: history + priority)
+    // Save to history (Pro and Premium: history + priority)
     const { data: profile } = await supabase.from("profiles").select("subscription_status").eq("id", user.id).single();
-    const saveHistory = profile?.subscription_status === "pro";
+    const saveHistory = profile?.subscription_status === "pro" || profile?.subscription_status === "premium";
     if (saveHistory) {
       await supabase.from("analyses").insert({
         user_id: user.id,

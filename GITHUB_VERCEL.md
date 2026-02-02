@@ -87,6 +87,51 @@ Pour redéployer :
    ```
 2. Vercel redéploie automatiquement quand vous poussez sur `main`.
 
+### La dernière version du code n’apparaît pas sur Vercel
+
+Si Vercel affiche toujours l’ancienne version (ex. thème sombre) alors que vous avez modifié le code en local :
+
+**Cause :** Les changements n’ont pas été **commités et poussés** sur GitHub. Vercel déploie uniquement ce qui est sur GitHub (branche `main`).
+
+**À faire :** Dans le dossier Verdict, exécutez :
+
+```powershell
+cd C:\Users\Abyssin\Documents\Verdict
+git add .
+git commit -m "Redesign: thème clair, 3 plans CHF, contact, legal, Stripe Premium"
+git push origin main
+```
+
+Attendez 1–2 minutes que Vercel termine le déploiement, puis rafraîchissez le site avec **Ctrl+Shift+R**.
+
+### Le site ne s’actualise pas après un redéploiement
+
+Si vous avez redéployé mais que vous voyez toujours l’ancienne version :
+
+1. **Forcer un nouveau déploiement sans cache (Vercel)**  
+   - Allez sur **https://vercel.com** → votre projet VERDICT.  
+   - Onglet **Deployments** → cliquez sur les **3 points** (⋯) du dernier déploiement → **Redeploy**.  
+   - **Cochez « Clear Build Cache »** (ou « Redeploy with cache cleared » selon l’interface).  
+   - Validez. Attendez la fin du build.
+
+2. **Vérifier que c’est bien la prod**  
+   - Dans **Deployments**, le déploiement en haut doit être **Production** (badge vert).  
+   - Si ce n’est pas le cas : cliquez sur ce déploiement → **Promote to Production**.
+
+3. **Forcer le rafraîchissement dans le navigateur**  
+   - **Windows** : `Ctrl + Shift + R` ou `Ctrl + F5`.  
+   - **Mac** : `Cmd + Shift + R`.  
+   - Ou ouvrir le site en **navigation privée** pour éviter le cache.
+
+4. **Vérifier la branche**  
+   - **Project Settings** → **Git** → **Production Branch** doit être la branche que vous poussez (souvent `main`).  
+   - Après un `git push origin main`, seul un déploiement depuis cette branche devient la prod.
+
+5. **Vérifier l’URL**  
+   - Vous regardez bien l’URL de production (ex. `https://votre-projet.vercel.app`) et pas une ancienne URL ou un lien en cache.
+
+En résumé : **Redeploy avec « Clear Build Cache »** + **Promote to Production** si besoin + **Ctrl+Shift+R** dans le navigateur.
+
 ---
 
 ## Récap

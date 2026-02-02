@@ -44,23 +44,23 @@ export function AnalyzeForm() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="mt-8 space-y-8">
       <form onSubmit={handleSubmit} className="space-y-4">
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Paste your email, contract, or message here..."
           rows={10}
-          className="w-full resize-y rounded-xl border border-white/20 bg-verdict-charcoal px-4 py-3 text-white placeholder-white/40 focus:border-verdict-red focus:outline-none focus:ring-1 focus:ring-verdict-red"
+          className="w-full resize-y rounded-2xl border border-verdict-gray-200 bg-white px-4 py-3 text-verdict-gray-900 placeholder-verdict-gray-400 focus:border-verdict-red focus:outline-none focus:ring-1 focus:ring-verdict-red shadow-soft"
           disabled={loading}
         />
         {error && (
-          <p className="rounded-lg border border-verdict-red/50 bg-verdict-red/10 px-4 py-2 text-sm text-red-300">
+          <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-2.5 text-sm text-red-800">
             {error}
           </p>
         )}
         {paywall && (
-          <p className="rounded-lg border border-verdict-red/50 bg-verdict-red/10 px-4 py-2 text-sm text-red-300">
+          <p className="rounded-xl border border-verdict-red/30 bg-red-50 px-4 py-2.5 text-sm text-red-800">
             {paywallReason === "daily_limit"
               ? "Daily limit reached. Upgrade or try again tomorrow."
               : paywallReason === "trial_ended"

@@ -7,7 +7,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`rounded-xl border border-white/10 bg-verdict-charcoal/80 p-6 transition-smooth hover:border-white/15 ${className}`}
+      className={`rounded-2xl border border-verdict-gray-200 bg-white p-6 shadow-card transition-smooth hover:shadow-elevated ${className}`}
     >
       {children}
     </div>
@@ -25,8 +25,8 @@ export function CardHeader({
 }) {
   return (
     <div className={`mb-4 ${className}`}>
-      <h3 className="text-lg font-bold text-white">{title}</h3>
-      {subtitle && <p className="mt-1 text-sm text-white/60">{subtitle}</p>}
+      <h3 className="text-lg font-semibold text-verdict-gray-900">{title}</h3>
+      {subtitle && <p className="mt-1 text-sm text-verdict-gray-500">{subtitle}</p>}
     </div>
   );
 }

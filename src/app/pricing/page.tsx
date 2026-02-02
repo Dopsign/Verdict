@@ -3,72 +3,124 @@ import { createClient } from "@/lib/supabase/server";
 import { Nav } from "@/components/layout/Nav";
 import Button from "@/components/ui/Button";
 
+const PLANS = [
+  {
+    id: "starter",
+    name: "Starter",
+    price: "9.99",
+    currency: "CHF",
+    period: "/mo",
+    description: "Limited usage. Personal use.",
+    features: [
+      "Limited usage",
+      "Personal use",
+      "Email support",
+    ],
+    cta: "Get Starter",
+    highlighted: false,
+  },
+  {
+    id: "pro",
+    name: "Pro",
+    price: "19.99",
+    currency: "CHF",
+    period: "/mo",
+    description: "Unlimited analyses + history + priority.",
+    features: [
+      "Unlimited analyses",
+      "History",
+      "Priority processing",
+    ],
+    cta: "Get Pro",
+    highlighted: true,
+  },
+  {
+    id: "premium",
+    name: "Premium",
+    price: "39.99",
+    currency: "CHF",
+    period: "/mo",
+    description: "Unlimited + advanced analysis + priority support.",
+    features: [
+      "Unlimited",
+      "Advanced analysis",
+      "Priority support",
+      "Early features",
+    ],
+    cta: "Get Premium",
+    highlighted: false,
+  },
+] as const;
+
 export default async function PricingPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
   return (
-    <div className="min-h-screen bg-verdict-black">
+    <div className="min-h-screen bg-verdict-off-white">
       <Nav authenticated={!!user} email={user?.email ?? null} />
 
-      <main className="mx-auto max-w-5xl px-4 pt-24 pb-20">
-        <h1 className="mb-2 text-center text-3xl font-bold text-white sm:text-4xl">
-          Simple pricing
+      <main className="mx-auto max-w-6xl px-4 pt-24 pb-20">
+        <h1 className="text-center text-2xl font-semibold text-verdict-gray-900 sm:text-3xl">
+          Simple, transparent pricing
         </h1>
-        <p className="mb-12 text-center text-white/60">
-          Start free. Upgrade when you need more.
+        <p className="mt-3 text-center text-verdict-gray-600">
+          Very clear. Monthly only. Cancel anytime. Secure payment via Stripe.
         </p>
 
-        <div className="grid gap-8 md:grid-cols-2">
-          {/* Starter */}
-          <div className="rounded-2xl border border-white/15 bg-verdict-charcoal/80 p-8 transition-smooth hover:border-verdict-red/30">
-            <h2 className="text-xl font-bold text-white">Starter</h2>
-            <p className="mt-2 text-white/60">
-              Unlimited analyses. No history.
-            </p>
-            <p className="mt-6 text-3xl font-bold text-white">
-              $9<span className="text-lg font-normal text-white/60">/mo</span>
-            </p>
-            <ul className="mt-6 space-y-3 text-sm text-white/80">
-              <li>✓ Unlimited analyses</li>
-              <li>✓ Critical errors, risks, improvements</li>
-              <li>✓ Corrected version</li>
-              <li className="text-white/50">✗ No history</li>
-              <li className="text-white/50">✗ No priority</li>
-            </ul>
-            <Link href={user ? "/account?plan=starter" : "/auth/signup?plan=starter"} className="mt-8 block">
-              <Button variant="secondary" fullWidth>
-                Get Starter
-              </Button>
-            </Link>
-          </div>
-
-          {/* Pro */}
-          <div className="rounded-2xl border-2 border-verdict-red/50 bg-verdict-charcoal p-8 transition-smooth hover:border-verdict-red">
-            <span className="inline-block rounded-full bg-verdict-red/20 px-3 py-1 text-xs font-semibold text-verdict-red">
-              Pro
-            </span>
-            <h2 className="mt-3 text-xl font-bold text-white">Pro</h2>
-            <p className="mt-2 text-white/60">
-              Unlimited analyses + history + priority.
-            </p>
-            <p className="mt-6 text-3xl font-bold text-white">
-              $19<span className="text-lg font-normal text-white/60">/mo</span>
-            </p>
-            <ul className="mt-6 space-y-3 text-sm text-white/80">
-              <li>✓ Everything in Starter</li>
-              <li>✓ Full analysis history</li>
-              <li>✓ Priority analysis</li>
-              <li>✓ Export & share</li>
-            </ul>
-            <Link href={user ? "/account?plan=pro" : "/auth/signup?plan=pro"} className="mt-8 block">
-              <Button fullWidth>Get Pro</Button>
-            </Link>
-          </div>
+        {/* Trial clarity */}
+        <div className="mt-8 rounded-2xl border border-verdict-gray-200 bg-white p-6 text-center shadow-card sm:mx-auto sm:max-w-xl">
+          <p className="font-medium text-verdict-gray-900">5-day free trial</p>
+          <p className="mt-1 text-sm text-verdict-gray-600">
+            Max 5 analyses per day during trial. No credit card required.
+          </p>
         </div>
 
-        <p className="mt-12 text-center text-sm text-white/50">
-          All plans use Stripe. Cancel anytime.
+        <div className="mt-12 grid gap-8 md:grid-cols-3">
+          {PLANS.map((plan) => (
+            <div
+              key={plan.id}
+              className={`rounded-2xl border bg-white p-8 shadow-card transition-smooth hover:shadow-elevated ${
+                plan.highlighted
+                  ? "border-2 border-verdict-red/30"
+                  : "border-verdict-gray-200"
+              }`}
+            >
+              {plan.highlighted && (
+                <span className="inline-block rounded-full bg-verdict-red/10 px-3 py-1 text-xs font-semibold text-verdict-red">
+                  Pro
+                </span>
+              )}
+              <h2 className={`${plan.highlighted ? "mt-3" : ""} text-xl font-semibold text-verdict-gray-900`}>
+                {plan.name}
+              </h2>
+              <p className="mt-2 text-sm text-verdict-gray-600">{plan.description}</p>
+              <p className="mt-6 text-3xl font-semibold text-verdict-gray-900">
+                {plan.price} {plan.currency}
+                <span className="text-base font-normal text-verdict-gray-500">{plan.period}</span>
+              </p>
+              <ul className="mt-6 space-y-3 text-sm text-verdict-gray-700">
+                {plan.features.map((f) => (
+                  <li key={f}>✓ {f}</li>
+                ))}
+              </ul>
+              <Link
+                href={user ? `/account?plan=${plan.id}` : `/auth/signup?plan=${plan.id}`}
+                className="mt-8 block"
+              >
+                <Button
+                  fullWidth
+                  variant={plan.highlighted ? "primary" : "secondary"}
+                >
+                  {plan.cta}
+                </Button>
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-12 text-center text-sm text-verdict-gray-500">
+          Secure payments via Stripe. Cancel anytime.
         </p>
       </main>
     </div>
