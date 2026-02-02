@@ -62,6 +62,33 @@ Si GitHub demande un mot de passe : utilisez un **Personal Access Token** (Setti
    - Puis Supabase, OpenAI, Stripe, etc.
 9. Cliquez sur **Deploy**.
 
+### Après avoir tout supprimé et redéployé
+
+Si vous avez supprimé le projet Vercel (ou le dépôt) et tout redéployé, vérifiez :
+
+1. **Variables d’environnement** (Vercel → projet → **Settings** → **Environment Variables**)  
+   - Toutes celles de `.env.example` : `NEXT_PUBLIC_SITE_URL`, Supabase, OpenAI, Stripe (clés + Price IDs + Webhook secret), optionnellement Resend.  
+   - **NEXT_PUBLIC_SITE_URL** = l’URL réelle du site (ex. `https://verdict-pbaq.vercel.app` ou `https://verdictonline.ch`).
+
+2. **Branche de production**  
+   - **Settings** → **Git** → **Production Branch** = **main**.
+
+3. **Domaine personnalisé** (si vous utilisez verdictonline.ch)  
+   - **Settings** → **Domains** → ajoutez `verdictonline.ch` si besoin.
+
+4. **Supabase** (auth)  
+   - Supabase → **Authentication** → **URL Configuration** :  
+   - **Site URL** = votre URL de prod (ex. `https://verdictonline.ch`).  
+   - **Redirect URLs** : ajoutez `https://votre-domaine.vercel.app/auth/callback` et `https://verdictonline.ch/auth/callback`.
+
+5. **Stripe** (webhook)  
+   - Stripe → **Developers** → **Webhooks** → **Add endpoint** :  
+   - URL = `https://votre-domaine.vercel.app/api/stripe/webhook` (ou votre domaine custom).  
+   - Événements : `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`.  
+   - Copiez le **Signing secret** → variable **STRIPE_WEBHOOK_SECRET** dans Vercel.
+
+Après ça, le site et les paiements / auth devraient fonctionner.
+
 ---
 
 ## Problèmes courants
