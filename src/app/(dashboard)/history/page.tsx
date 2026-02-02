@@ -87,9 +87,9 @@ export default async function HistoryPage() {
                 >
                   <p className="text-sm text-verdict-gray-500">{date}</p>
                   <p className="mt-2 line-clamp-2 text-verdict-gray-900">{preview}</p>
-                  {output?.criticalErrors?.length > 0 && (
+                  {(output?.potentialRisks?.length > 0 || output?.antiScamFlags?.length > 0) && (
                     <span className="mt-2 inline-block text-xs text-red-600">
-                      {output.criticalErrors.length} critical
+                      {(output.potentialRisks?.length ?? 0) + (output.antiScamFlags?.length ?? 0)} risk(s)
                     </span>
                   )}
                 </Link>

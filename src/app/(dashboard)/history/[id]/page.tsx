@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Card } from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import type { VerdictAnalysisResult } from "@/lib/types/analysis";
+import { HistoryDetailClient } from "./HistoryDetailClient";
 
 export default async function HistoryDetailPage({
   params,
@@ -27,6 +28,7 @@ export default async function HistoryDetailPage({
   if (error || !row) notFound();
 
   const result = row.output_json as VerdictAnalysisResult;
+  const inputText = row.input_text as string;
 
   const date = new Date(row.created_at).toLocaleDateString(undefined, {
     dateStyle: "long",
@@ -50,68 +52,7 @@ export default async function HistoryDetailPage({
         </Link>
       </div>
 
-      <div className="space-y-6">
-        <Card>
-          <h3 className="mb-2 font-semibold text-verdict-gray-900">Original text</h3>
-          <div className="whitespace-pre-wrap rounded-xl border border-verdict-gray-200 bg-verdict-gray-50 p-4 text-sm text-verdict-gray-900">
-            {row.input_text}
-          </div>
-        </Card>
-
-        <Card className="border-red-200 bg-red-50/50">
-          <h3 className="mb-2 flex items-center gap-2 font-semibold text-red-700">
-            ❌ Critical Errors
-          </h3>
-          {result?.criticalErrors?.length ? (
-            <ul className="list-inside list-disc space-y-1 text-sm text-red-900">
-              {result.criticalErrors.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-sm text-verdict-gray-500">None.</p>
-          )}
-        </Card>
-
-        <Card className="border-amber-200 bg-amber-50/50">
-          <h3 className="mb-2 flex items-center gap-2 font-semibold text-amber-800">
-            ⚠️ Risks
-          </h3>
-          {result?.risks?.length ? (
-            <ul className="list-inside list-disc space-y-1 text-sm text-amber-900">
-              {result.risks.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-sm text-verdict-gray-500">None.</p>
-          )}
-        </Card>
-
-        <Card className="border-green-200 bg-green-50/50">
-          <h3 className="mb-2 flex items-center gap-2 font-semibold text-green-800">
-            ✅ Improvements
-          </h3>
-          {result?.improvements?.length ? (
-            <ul className="list-inside list-disc space-y-1 text-sm text-green-900">
-              {result.improvements.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-sm text-verdict-gray-500">None.</p>
-          )}
-        </Card>
-
-        <Card>
-          <h3 className="mb-2 flex items-center gap-2 font-semibold text-verdict-gray-900">
-            ✍️ Corrected Version
-          </h3>
-          <div className="whitespace-pre-wrap rounded-xl border border-verdict-gray-200 bg-verdict-gray-50 p-4 text-sm text-verdict-gray-900">
-            {result?.correctedVersion ?? "—"}
-          </div>
-        </Card>
-      </div>
+      <HistoryDetailClient result={result} inputText={inputText} />
     </div>
   );
 }

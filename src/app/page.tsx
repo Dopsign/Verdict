@@ -28,7 +28,10 @@ export default async function LandingPage() {
               Before you send it — get a VERDICT.
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-verdict-gray-600 sm:text-xl">
-              VERDICT is an AI safety layer that detects errors, risks, and weak decisions before they cost you money, time, or reputation.
+              VERDICT is an AI legal assistant that explains, analyzes, highlights risks, and helps you draft responses — especially when you can&apos;t afford a lawyer.
+            </p>
+            <p className="mx-auto mt-4 max-w-xl rounded-xl border border-verdict-gray-200 bg-verdict-off-white px-4 py-3 text-sm text-verdict-gray-600">
+              <strong>VERDICT is NOT a lawyer</strong> and does <strong>NOT provide legal advice</strong>. We explain, analyze, highlight risks, and help draft responses — for informational use only.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
@@ -120,36 +123,65 @@ export default async function LandingPage() {
               <div className="text-center">
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-verdict-red/10 text-verdict-red font-semibold">1</span>
                 <h3 className="mt-4 font-semibold text-verdict-gray-900">Paste your text</h3>
-                <p className="mt-2 text-sm text-verdict-gray-600">Email, contract, message, or decision.</p>
+                <p className="mt-2 text-sm text-verdict-gray-600">Email, letter, contract, legal notice, or situation.</p>
               </div>
               <div className="text-center">
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-verdict-blue/10 text-verdict-blue font-semibold">2</span>
-                <h3 className="mt-4 font-semibold text-verdict-gray-900">Get a clear verdict</h3>
-                <p className="mt-2 text-sm text-verdict-gray-600">Critical errors, risks, improvements, corrected version.</p>
+                <h3 className="mt-4 font-semibold text-verdict-gray-900">Get a clear analysis</h3>
+                <p className="mt-2 text-sm text-verdict-gray-600">Risks, what to watch for, your rights, next steps, what to avoid. Anti-scam detection.</p>
               </div>
               <div className="text-center">
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-verdict-gray-200 text-verdict-gray-700 font-semibold">3</span>
-                <h3 className="mt-4 font-semibold text-verdict-gray-900">Fix before sending</h3>
-                <p className="mt-2 text-sm text-verdict-gray-600">Copy the corrected text. Send with confidence.</p>
+                <h3 className="mt-4 font-semibold text-verdict-gray-900">Generate a safe reply</h3>
+                <p className="mt-2 text-sm text-verdict-gray-600">Safe, firm, neutral, or ask-for-clarification — copy and send with confidence.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 4b — USE CASES */}
+        <section id="use-cases" className={`border-t border-verdict-gray-100 ${sectionClass}`}>
+          <div className={containerClass}>
+            <h2 className={`text-center ${headingClass}`}>How VERDICT helps</h2>
+            <p className={`mx-auto max-w-xl text-center ${subtextClass}`}>
+              Calm guidance when you need it.
+            </p>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2">
+              <div className="rounded-2xl border border-verdict-gray-200 bg-white p-6 shadow-card transition-smooth hover:shadow-elevated">
+                <h3 className="font-semibold text-verdict-gray-900">Received a scary email?</h3>
+                <p className="mt-2 text-sm text-verdict-gray-600">Paste it. VERDICT explains what it means, highlights risks, and helps you draft a calm, safe reply. No panic language.</p>
+              </div>
+              <div className="rounded-2xl border border-verdict-gray-200 bg-white p-6 shadow-card transition-smooth hover:shadow-elevated">
+                <h3 className="font-semibold text-verdict-gray-900">Unsure about a contract?</h3>
+                <p className="mt-2 text-sm text-verdict-gray-600">VERDICT breaks it down in plain language. Points out unclear terms and risks. Helps you ask for clarification. Not legal advice — guidance.</p>
+              </div>
+              <div className="rounded-2xl border border-verdict-gray-200 bg-white p-6 shadow-card transition-smooth hover:shadow-elevated">
+                <h3 className="font-semibold text-verdict-gray-900">Being pressured to pay?</h3>
+                <p className="mt-2 text-sm text-verdict-gray-600">Anti-scam mode detects pressure tactics, urgency threats, vague legal language, and fake authority. Helps you stay calm and protect yourself.</p>
+              </div>
+              <div className="rounded-2xl border border-verdict-gray-200 bg-white p-6 shadow-card transition-smooth hover:shadow-elevated">
+                <h3 className="font-semibold text-verdict-gray-900">Afraid of being scammed?</h3>
+                <p className="mt-2 text-sm text-verdict-gray-600">VERDICT flags red flags — pressure, fake urgency, unclear terms. Explains your rights. Recommends next steps. Protective, not panicking.</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* SECTION 5 — WHAT VERDICT ANALYZES */}
-        <section className={`border-t border-verdict-gray-100 ${sectionClass}`}>
+        <section className={`border-t border-verdict-gray-100 bg-verdict-off-white ${sectionClass}`}>
           <div className={containerClass}>
             <h2 className={`text-center ${headingClass}`}>What VERDICT analyzes</h2>
             <p className={`mx-auto max-w-xl text-center ${subtextClass}`}>
-              Any text that could cost you if it&apos;s wrong.
+              Emails, letters, legal notices, contracts, messages, or situations explained in plain text.
             </p>
             <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 "Emails",
+                "Letters",
+                "Legal notices",
                 "Contracts",
-                "Business decisions",
                 "Sensitive messages",
-                "Important documents",
+                "Situations (plain text)",
               ].map((item) => (
                 <div key={item} className="rounded-2xl border border-verdict-gray-200 bg-white p-5 shadow-card transition-smooth hover:shadow-elevated">
                   <p className="font-medium text-verdict-gray-900">{item}</p>
@@ -160,28 +192,28 @@ export default async function LandingPage() {
         </section>
 
         {/* SECTION 6 — HOW THE AI THINKS (TRANSPARENCY) */}
-        <section className={`border-t border-verdict-gray-100 bg-verdict-off-white ${sectionClass}`}>
+        <section className={`border-t border-verdict-gray-100 ${sectionClass}`}>
           <div className={containerClass}>
-            <h2 className={`text-center ${headingClass}`}>How the AI thinks</h2>
+            <h2 className={`text-center ${headingClass}`}>How VERDICT works</h2>
             <p className={`mx-auto max-w-2xl text-center ${subtextClass}`}>
-              Transparency is critical for trust. VERDICT does not guess — it highlights risks and explains why.
+              VERDICT explains, analyzes, highlights risks, and helps draft responses. It does NOT give legal advice — it guides you safely.
             </p>
             <ul className="mx-auto mt-12 max-w-2xl space-y-4 text-verdict-gray-700">
               <li className="flex gap-3 rounded-xl border border-verdict-gray-200 bg-white p-4 shadow-soft">
                 <span className="text-verdict-blue font-semibold">→</span>
-                It does not guess. It flags what could go wrong based on your text.
+                Explains what the message is about in plain language.
               </li>
               <li className="flex gap-3 rounded-xl border border-verdict-gray-200 bg-white p-4 shadow-soft">
                 <span className="text-verdict-blue font-semibold">→</span>
-                It highlights risks — legal, financial, reputational — with clear labels.
+                Highlights risks, what to be careful about, and your rights (general, informational — not legal advice).
               </li>
               <li className="flex gap-3 rounded-xl border border-verdict-gray-200 bg-white p-4 shadow-soft">
                 <span className="text-verdict-blue font-semibold">→</span>
-                It explains why something is risky or unclear.
+                Anti-scam mode: detects pressure tactics, urgency threats, vague legal language, fake authority, scam red flags.
               </li>
               <li className="flex gap-3 rounded-xl border border-verdict-gray-200 bg-white p-4 shadow-soft">
                 <span className="text-verdict-blue font-semibold">→</span>
-                It suggests safer alternatives and a corrected version you can copy.
+                Response Generator: safe, firm, neutral, or ask-for-clarification — calm, professional, protective replies you can copy.
               </li>
             </ul>
           </div>
@@ -202,22 +234,32 @@ export default async function LandingPage() {
                 </p>
               </div>
               <div>
-                <p className="text-sm font-medium text-red-700">❌ Critical errors</p>
-                <p className="mt-2 text-sm text-verdict-gray-700">Vague commitment (&quot;full amount&quot; — which amount? which date exactly?).</p>
+                <p className="text-sm font-medium text-verdict-gray-700">🧾 What this message is about</p>
+                <p className="mt-2 text-sm text-verdict-gray-700">A commitment to pay, but the amount and date are vague.</p>
               </div>
               <div>
-                <p className="text-sm font-medium text-amber-700">⚠️ Risks</p>
-                <p className="mt-2 text-sm text-verdict-gray-700">No reference to a specific contract or invoice. Could be disputed later.</p>
+                <p className="text-sm font-medium text-red-700">❌ Potential risks</p>
+                <p className="mt-2 text-sm text-verdict-gray-700">Vague commitment — which amount? which date? No reference to a contract or invoice.</p>
               </div>
               <div>
-                <p className="text-sm font-medium text-green-700">✅ Improvements</p>
-                <p className="mt-2 text-sm text-verdict-gray-700">Specify the amount, date, and reference (e.g. invoice #).</p>
+                <p className="text-sm font-medium text-amber-700">⚠️ What to be careful about</p>
+                <p className="mt-2 text-sm text-verdict-gray-700">Specify amount, date, and reference (e.g. invoice #) before agreeing.</p>
               </div>
               <div>
-                <p className="text-sm font-medium text-verdict-gray-900">✍️ Corrected version</p>
-                <p className="mt-2 rounded-xl border border-verdict-gray-200 bg-white p-4 text-sm text-verdict-gray-800">
-                  I agree to the terms and will pay the amount of $X by [specific date]. Payment refers to Invoice #XXX. Looking forward to working together.
-                </p>
+                <p className="text-sm font-medium text-blue-700">🛡️ Your rights (general, informational)</p>
+                <p className="mt-2 text-sm text-verdict-gray-700">You have the right to ask for proof and clarification. Not legal advice.</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-green-700">✅ Recommended next steps</p>
+                <p className="mt-2 text-sm text-verdict-gray-700">Ask for a specific invoice, amount, and deadline in writing.</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-red-700">🚫 What NOT to do</p>
+                <p className="mt-2 text-sm text-verdict-gray-700">Don&apos;t pay without written confirmation. Don&apos;t sign or agree until terms are clear.</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-verdict-gray-900">Response Generator</p>
+                <p className="mt-2 text-sm text-verdict-gray-700">Generate a safe, firm, neutral, or ask-for-clarification reply — copy and send.</p>
               </div>
             </div>
           </div>
@@ -228,10 +270,10 @@ export default async function LandingPage() {
           <div className={containerClass}>
             <h2 className={`text-center ${headingClass}`}>Who it&apos;s for</h2>
             <p className={`mx-auto max-w-xl text-center ${subtextClass}`}>
-              Anyone making important decisions with words.
+              Anyone who needs calm, protective guidance — especially people who cannot afford a lawyer.
             </p>
             <div className="mt-12 flex flex-wrap justify-center gap-4">
-              {["Founders", "Freelancers", "Consultants", "Operators", "Executives"].map((role) => (
+              {["People who can't afford a lawyer", "Freelancers", "Small business owners", "Consumers", "Anyone unsure about a message"].map((role) => (
                 <span key={role} className="rounded-xl border border-verdict-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-verdict-gray-700 shadow-soft">
                   {role}
                 </span>
@@ -336,12 +378,12 @@ export default async function LandingPage() {
             <div className="mt-12 space-y-6">
               {[
                 {
-                  q: "Is this legally binding advice?",
-                  a: "No. VERDICT highlights risks and suggests improvements. It is not a substitute for legal or professional advice. For contracts and legal matters, consult a qualified professional.",
+                  q: "Is VERDICT a lawyer? Does it give legal advice?",
+                  a: "No. VERDICT is NOT a lawyer and does NOT provide legal advice. It explains, analyzes, highlights risks, and helps draft responses — for informational use only. For legal matters, consult a qualified professional.",
                 },
                 {
                   q: "Can I trust the AI?",
-                  a: "VERDICT is designed to be precise and transparent. It explains why it flags something and suggests alternatives. Use it as a second pair of eyes, not as the final authority.",
+                  a: "VERDICT is designed to be calm, transparent, and protective. It explains why it flags something and suggests alternatives. Use it as a second pair of eyes, not as legal authority.",
                 },
                 {
                   q: "What happens after the trial?",
@@ -384,13 +426,16 @@ export default async function LandingPage() {
         {/* SECTION 14 — FOOTER (legal) */}
         <footer className="border-t border-verdict-gray-200 bg-verdict-near-black py-16 text-white">
           <div className={`${containerClass} px-4`}>
+            <div className="rounded-xl border border-verdict-gray-700 bg-verdict-gray-800/50 p-4 mb-10 text-xs text-verdict-gray-400">
+              <strong className="text-verdict-gray-300">Disclaimer:</strong> VERDICT is NOT a lawyer and does NOT provide legal advice. VERDICT explains, analyzes, highlights risks, and helps draft responses — for informational purposes only. For legal matters, consult a qualified professional.
+            </div>
             <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <Logo href="/" textWhite />
                 <p className="mt-2 text-sm text-verdict-gray-400">
                   Before you send it — get a verdict.
                 </p>
-                <p className="mt-4 text-sm text-verdict-gray-500">VERDICT · Company info · Built with care</p>
+                <p className="mt-4 text-sm text-verdict-gray-500">VERDICT · AI legal assistant · Built with care</p>
               </div>
               <div className="flex flex-wrap gap-8 text-sm">
                 <div>
@@ -412,7 +457,7 @@ export default async function LandingPage() {
               </div>
             </div>
             <div className="mt-12 border-t border-verdict-gray-700 pt-8 text-sm text-verdict-gray-500">
-              © VERDICT. Secure payments via Stripe. Cancel anytime.
+              © VERDICT. VERDICT is NOT a lawyer. Secure payments via Stripe. Cancel anytime.
             </div>
           </div>
         </footer>

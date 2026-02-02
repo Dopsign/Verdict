@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Red hexagon (falcon badge) -->
+  <path d="M16 2 L26 9 L26 23 L16 30 L6 23 L6 9 Z" fill="#d32f2f"/>
+  <!-- White V / falcon symbol -->
+  <path d="M11 24 L16 10 L21 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

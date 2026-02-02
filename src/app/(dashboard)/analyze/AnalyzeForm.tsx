@@ -73,7 +73,7 @@ export function AnalyzeForm() {
         </Button>
       </form>
 
-      {result && <ResultDisplay result={result} />}
+      {result && <ResultDisplay result={result} inputText={text.trim()} />}
     </div>
   );
 }

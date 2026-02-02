@@ -6,20 +6,29 @@ import { getUsageState, incrementUsage } from "@/lib/usage";
 import type { VerdictAnalysisResult } from "@/lib/types/analysis";
 
 const VERDICT_SYSTEM_PROMPT = `You are VERDICT.
-You are calm, precise, and protective.
-You speak like a senior expert.
-You do not exaggerate.
-You exist to prevent mistakes.
+You are a calm, professional legal assistant.
+You explain clearly.
+You protect the user.
+You do NOT give legal advice.
+You never exaggerate.
+You help users understand and respond safely.
 
-Tone: Professional. Clear. Confident. Never arrogant.
+IMPORTANT: VERDICT is NOT a lawyer. VERDICT does NOT provide legal advice. You explain, analyze, highlight risks, and help draft responses — but you never give legal advice.
 
-Analyze the user's text (email, contract, decision, message) and return a JSON object with exactly these keys:
-- criticalErrors: array of strings. Legal/financial/commitment errors, wrong numbers, missing obligations, tone that could get them sued or fired.
-- risks: array of strings. Possible misunderstandings, unclear terms, reputational or relationship risks.
-- improvements: array of strings. Style, clarity, grammar, professionalism improvements.
-- correctedVersion: string. A single corrected, improved version of the full text. If no changes needed, return the original text.
+Tone: Calm. Professional. Clear. Protective. Never aggressive or panicking.
 
-Be honest and direct. Empty arrays where nothing applies. No sugarcoating.`;
+Analyze the user's text (email, letter, legal notice, contract, message, or situation explained in plain text) and return a JSON object with exactly these keys:
+
+1. whatMessageAbout: string. A simple, clear explanation of what this message or situation is about. No jargon. Easy to understand.
+2. potentialRisks: array of strings. Possible risks — legal, financial, practical, or reputational.
+3. beCarefulAbout: array of strings. What the user should be careful about. Specific points to watch.
+4. yourRights: array of strings. General, informational points about rights (e.g. right to ask for proof, right to refuse, right to get professional advice). Clearly state: this is NOT legal advice, just general information.
+5. recommendedSteps: array of strings. Recommended next steps. Calm, practical, protective.
+6. whatNotToDo: array of strings. What the user should NOT do (e.g. don't pay immediately, don't sign without reading).
+7. antiScamFlags: array of strings. If you detect scam indicators: pressure tactics, urgency threats, vague legal language, fake authority, red flags of scams. Empty array if no scam indicators.
+8. scamDetected: boolean. True if antiScamFlags has items, false otherwise.
+
+Be honest and direct. Empty arrays where nothing applies. Do not exaggerate or create panic. Stay calm and protective.`;
 
 export interface AnalyzeResult {
   success: boolean;
@@ -70,17 +79,20 @@ export async function runAnalysis(inputText: string): Promise<AnalyzeResult> {
       return { success: false, error: "Empty response from AI." };
     }
 
-    const parsed = JSON.parse(content) as VerdictAnalysisResult;
+    const parsed = JSON.parse(content) as Partial<VerdictAnalysisResult>;
     const result: VerdictAnalysisResult = {
-      criticalErrors: Array.isArray(parsed.criticalErrors) ? parsed.criticalErrors : [],
-      risks: Array.isArray(parsed.risks) ? parsed.risks : [],
-      improvements: Array.isArray(parsed.improvements) ? parsed.improvements : [],
-      correctedVersion: typeof parsed.correctedVersion === "string" ? parsed.correctedVersion : inputText,
+      whatMessageAbout: typeof parsed.whatMessageAbout === "string" ? parsed.whatMessageAbout : "",
+      potentialRisks: Array.isArray(parsed.potentialRisks) ? parsed.potentialRisks : [],
+      beCarefulAbout: Array.isArray(parsed.beCarefulAbout) ? parsed.beCarefulAbout : [],
+      yourRights: Array.isArray(parsed.yourRights) ? parsed.yourRights : [],
+      recommendedSteps: Array.isArray(parsed.recommendedSteps) ? parsed.recommendedSteps : [],
+      whatNotToDo: Array.isArray(parsed.whatNotToDo) ? parsed.whatNotToDo : [],
+      antiScamFlags: Array.isArray(parsed.antiScamFlags) ? parsed.antiScamFlags : [],
+      scamDetected: Boolean(parsed.scamDetected),
     };
 
     await incrementUsage(user.id);
 
-    // Save to history (Pro and Premium: history + priority)
     const { data: profile } = await supabase.from("profiles").select("subscription_status").eq("id", user.id).single();
     const saveHistory = profile?.subscription_status === "pro" || profile?.subscription_status === "premium";
     if (saveHistory) {
