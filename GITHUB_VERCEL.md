@@ -104,6 +104,23 @@ git push origin main
 
 Attendez 1–2 minutes que Vercel termine le déploiement, puis rafraîchissez le site avec **Ctrl+Shift+R**.
 
+### Le code est poussé sur GitHub mais le site affiche encore l’ancienne version
+
+Si vous avez bien fait `git push origin main` et que le commit « Redesign... » est sur GitHub :
+
+1. **Vercel → Deployments**  
+   - Regardez le **dernier déploiement** en haut : le message de commit doit être **« Redesign: thème clair... »** (pas « Initial commit »).  
+   - Si c’est encore « Initial commit » : cliquez sur les **3 points** (⋯) de ce déploiement → **Redeploy** → cochez **Clear Build Cache** → validez.  
+   - Si le dernier déploiement avec « Redesign... » n’est **pas** en Production : cliquez dessus → **Promote to Production**.
+
+2. **Project Settings → Git**  
+   - **Production Branch** doit être **`main`**. Si c’est autre chose (ex. `master`), changez en `main` et sauvegardez.
+
+3. **Cache du navigateur**  
+   - Ouvrez le site (ex. verdictonline.ch) et faites **Ctrl+Shift+R** (ou **Ctrl+F5**), ou testez en **navigation privée**. Sinon le navigateur peut afficher l’ancienne version en cache.
+
+**Deploy Hooks :** ce n’est pas là qu’on « met main » pour mettre à jour le site. Les Hooks servent à avoir une URL pour déclencher un redéploiement. Pour créer un hook : donnez un **nom** (ex. « Redéploiement manuel »), pas vide.
+
 ### Le site ne s’actualise pas après un redéploiement
 
 Si vous avez redéployé mais que vous voyez toujours l’ancienne version :
@@ -123,9 +140,10 @@ Si vous avez redéployé mais que vous voyez toujours l’ancienne version :
    - **Mac** : `Cmd + Shift + R`.  
    - Ou ouvrir le site en **navigation privée** pour éviter le cache.
 
-4. **Vérifier la branche**  
-   - **Project Settings** → **Git** → **Production Branch** doit être la branche que vous poussez (souvent `main`).  
-   - Après un `git push origin main`, seul un déploiement depuis cette branche devient la prod.
+4. **Vérifier la branche (c’est ici qu’il faut « main »)**  
+   - **Project Settings** → **Git** → **Production Branch** doit être **`main`** (pas dans « Deploy Hooks »).  
+   - C’est cette branche qui est déployée en production quand vous faites `git push origin main`.  
+   - **Deploy Hooks** = uniquement une URL pour *déclencher* un redéploiement à la demande (optionnel). Le champ « Branch » dans un hook peut être `main`, mais ça ne remplace pas le fait de pousser le code. Si vous créez un hook : mettez un **nom** (ex. « Redéploiement manuel »), pas vide, sinon erreur « Hook name must not be empty ».
 
 5. **Vérifier l’URL**  
    - Vous regardez bien l’URL de production (ex. `https://votre-projet.vercel.app`) et pas une ancienne URL ou un lien en cache.

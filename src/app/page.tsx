@@ -74,11 +74,11 @@ export default async function LandingPage() {
             </div>
             <div className="mt-12 grid gap-8 sm:grid-cols-2">
               <blockquote className="rounded-2xl border border-verdict-gray-200 bg-white p-6 shadow-card">
-                <p className="text-verdict-gray-700">"I run every important email through VERDICT. It caught a commitment I would have missed."</p>
+                <p className="text-verdict-gray-700">&quot;I run every important email through VERDICT. It caught a commitment I would have missed.&quot;</p>
                 <p className="mt-4 text-sm text-verdict-gray-500">— Founder, B2B SaaS</p>
               </blockquote>
               <blockquote className="rounded-2xl border border-verdict-gray-200 bg-white p-6 shadow-card">
-                <p className="text-verdict-gray-700">"Clear, no fluff. Tells me exactly what's risky and why. Saved me more than once."</p>
+                <p className="text-verdict-gray-700">&quot;Clear, no fluff. Tells me exactly what&apos;s risky and why. Saved me more than once.&quot;</p>
                 <p className="mt-4 text-sm text-verdict-gray-500">— Consultant</p>
               </blockquote>
             </div>
@@ -198,7 +198,7 @@ export default async function LandingPage() {
               <div>
                 <p className="text-sm font-medium text-verdict-gray-500">Input text</p>
                 <p className="mt-2 rounded-xl border border-verdict-gray-200 bg-white p-4 text-sm text-verdict-gray-800">
-                  "I agree to the terms and will pay the full amount by next week. Looking forward to working together."
+                  &quot;I agree to the terms and will pay the full amount by next week. Looking forward to working together.&quot;
                 </p>
               </div>
               <div>
